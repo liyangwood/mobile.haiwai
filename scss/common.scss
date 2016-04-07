@@ -1,0 +1,56 @@
+$blue-color : #37bccd;
+$c77-color : #777;
+$c9b-color : #9b9b9b;
+$yellow-color : #f4a62a;
+
+.hw-content{
+    margin-top: 44px;
+    background: #f7f7f7;
+}
+
+a{
+    text-decoration: none;
+}
+
+.hw-btn{
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    font-weight: 700;
+}
+.hw-blue-button{
+    background : $blue-color;
+    display : block;
+    margin-top : 20px;
+    color : #fff;
+    font-size : 18px;
+    border-radius: 4px;
+    border: none;
+    min-height: inherit;
+
+    &.activated{
+        background : #009ec7;
+    }
+    &:hover{
+        color: #ffffff;
+    }
+}
+.hw-light-button{
+    background: transparent;
+    display: block;
+    color : $blue-color;
+    border : 1px solid $blue-color;
+    border-radius: 4px;
+    font-size : 18px;
+    min-height: inherit;
+
+    &.activated{
+        background : #eeeeee;
+    }
+
+    &:hover{
+        color: $blue-color;
+    }
+}
+
+
