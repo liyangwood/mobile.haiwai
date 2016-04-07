@@ -1,11 +1,16 @@
 (function(){
 	var KG = {};
 
+	var site = 'http://beta.haiwai.com';
 	KG.config = {
 		APP_NAME : 'HaiWaiApp',
 
-		SERVER : 'http://beta.haiwai.com',
-		MD5_KEY : 'm.y^w8oP01K#gs'
+		SERVER : site,
+
+		SiteRoot : site,
+		ApiRoot : site+'/service/api/',
+		MD5_KEY : 'm.y^w8oP01K#gs',
+		SJAPP_AppleStore_Url : 'https://itunes.apple.com/us/app/hai-wai-tong-cheng-shang-jia/id974815137'
 	};
 
 	KG.App = angular.module(KG.config.APP_NAME, ['ionic', 'ngCordova']);

@@ -23,11 +23,51 @@
 
 <!-- build:js_core -->
 <script src="../bothjs/core.js"></script>
+<script src="../bothjs/request.js"></script>
+<script src="../bothjs/util.js"></script>
+<script src="../bothjs/helper.js"></script>
+<script src="../bothjs/user.js"></script>
+
+<script src="../bothjs/directive/base.js"></script>
+<script src="../bothjs/ctrl/root.js"></script>
+
+<script src="../js/ctrl/home.js"></script>
 
 <!-- endbuild -->
 </head>
-<body ng-app="HaiWaiApp">
+<body ng-app="HaiWaiApp" ng-controller="HomePageCtrl">
 
-	sdljfsl
+<hw-site-home-header></hw-site-home-header>
+<ion-content class="hw-content">
+	<hw-site-home-top-nav></hw-site-home-top-nav>
+
+	<div style="margin-top: 20px;" class="list hw-home-coupon-list">
+		<div class="item cp-head">
+			热门优惠
+			<a href="" class="item-note">
+				全部优惠
+			</a>
+		</div>
+		<a class="item item-thumbnail-left cp-item" ng-repeat="item in couponList">
+			<img ng-src="{{::item.files[0].path}}" />
+			<h2>
+				{{::item.bizinfo.name_cn}}
+				<span></span>
+			</h2>
+			<p class="cp-p">{{::item.subject}}</p>
+			<p class="cp-sp">{{::item.num_views}}人领取</p>
+		</a>
+	</div>
+
+	<div style="margin-top: 20px;" class="list hw-home-coupon-list">
+		<div class="item cp-head">
+			新店入驻
+		</div>
+	</div>
+
+	<a class="hw-btn hw-light-button" style="margin: 30px 25px;">创建我的店铺</a>
+
+</ion-content>
+
 </body>
 </html>
