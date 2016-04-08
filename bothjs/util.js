@@ -132,7 +132,11 @@
 		},
 
 		isAndroid : ionic.Platform.isAndroid,
-		isIOS : ionic.Platform.isIOS
+		isIOS : ionic.Platform.isIOS,
+
+		getTplPath : function(name){
+			return '../bothtpl/'+name+'.html';
+		}
 	});
 
 

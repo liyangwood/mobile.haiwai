@@ -98,4 +98,14 @@ a {
         overflow: hidden;
         height: 20px; }
 
+.hw-hwStoreViewComp .hw-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  text-align: center; }
+  .hw-hwStoreViewComp .hw-bg img {
+    height: 100%; }
+
 /*# sourceMappingURL=style.css.map */

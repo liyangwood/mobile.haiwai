@@ -24,7 +24,7 @@ KG.App.directive('hwSiteHomeTopNav', [
 		return {
 			restrict : 'E',
 			replace : true,
-			templateUrl : '../bothtpl/home/HomeTopNav.html'
+			templateUrl : util.getTplPath('home/HomeTopNav')
 		};
 	}
 ]);
