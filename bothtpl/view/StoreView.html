@@ -1,8 +1,15 @@
 
 <div class="hw-hwStoreViewComp">
-	111222
 	<div class="hw-bg">
-		{{::store.bg}}
-		<img ng-src="{{::store.bg}}" />
+		<img class="c-bg" ng-src="{{::store.bg}}" />
+
+
+	</div>
+
+	<div class="list hw-list">
+		<div class="hw-s1">
+			<span>地址</span>
+			<span>{{::store.fullAddress}}</span>
+		</div>
 	</div>
 </div>

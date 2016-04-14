@@ -516,6 +516,28 @@ KG.App.factory('$helper', function(
 
 
 
+    F.biz = {
+        fullAddress : function(biz){
+            var rs = '';
+            if(biz.address){
+                rs += biz.address + ', ';
+            }
+            if(biz.city){
+                rs += biz.city + ', ';
+            }
+            if(biz.state){
+                rs += biz.state + ' ';
+            }
+            if(biz.zip){
+                rs += biz.zip
+            }
+
+            return rs;
+        }
+    };
+
+
+
     KG.helper = F;
     return F;
 });

@@ -5,6 +5,7 @@ KG.App.directive('hwStoreViewComp', [
 			makeStoreData : function(data){
 				var store = data;
 				store.bg = data.background_pic;
+				store.fullAddress = KG.helper.biz.fullAddress(data);
 
 				return store;
 			}

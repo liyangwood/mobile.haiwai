@@ -2,6 +2,7 @@ $blue-color : #37bccd;
 $c77-color : #777;
 $c9b-color : #9b9b9b;
 $yellow-color : #f4a62a;
+$color-4a : #4a4a4a;
 
 .hw-content{
     margin-top: 44px;
@@ -56,3 +57,25 @@ a{
 //.backdrop-loading.active{
 //    background: transparent !important;
 //}
+
+.no_header{
+    margin-top:0 !important;
+}
+
+
+.hw-list{
+    background: #ffffff;
+
+    //单行模式
+    .hw-s1{
+        padding: 0 15px;
+        height: 42px;
+        line-height: 42px;
+        border-bottom:1px solid #ebebeb;
+
+        span{
+            font-size: 14px;
+            color: $color-4a;
+        }
+    }
+}
