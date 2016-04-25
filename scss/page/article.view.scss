@@ -1,15 +1,32 @@
 .hw-hwArticleViewComp{
-    padding: 0 15px;
+
+    .ca{
+        padding: 0 15px;
+        background: #ffffff;
+    }
+
     .hw-title{
-        font-size: 42px;
+        font-size: 21px;
         font-size: $color-4a;
         font-weight: normal;
-        margin: 20px 0;
+        margin: 0;
+        padding: 20px 0;
+    }
+    .hw-sp{
+        font-size: 12px;
+        color: #777777;
+        display: inline-block;
     }
 
     .hw-article{
-        font-size: 32px;
-        line-height: 52px;
+        font-size: 16px;
+        line-height: 24px;
         color: $color-4a;
+        padding-bottom: 30px;
+
+        img{
+            margin-top: 15px;
+            max-width: 100%;
+        }
     }
 }

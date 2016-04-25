@@ -52,8 +52,9 @@
 		replaceHtmlImgSrcToAbsolute : function(html){
 			var reg = new RegExp('<img\.*src=(\"|\')([^\"\']+)(\"|\')\\s*([\\w]+=(\"|\')([^\"\']*)(\"|\')\\s*)*/>', 'g');
 			return html.replace(reg, function(match){
-				console.log(match);
+
 				var src = arguments[2];
+
 				if(/^http/.test(src)){
 					return match;
 				}

@@ -43,8 +43,12 @@ KG.App.directive('hwArticleViewComp', [
 
 		};
 		var F = {
-			initData : function(data, $scope){
-				$scope.article = data.view;
+			initData : function(data){
+				var rs = {};
+				rs.article = data.view;
+				rs.article.msgbody = util.replaceHtmlImgSrcToAbsolute(data.view.msgbody);
+				rs.article.time = moment.unix(data.view.dateline).format('MM/DD/YYYY');
+				return rs;
 			}
 		};
 
@@ -58,7 +62,8 @@ KG.App.directive('hwArticleViewComp', [
 			controller : function($scope, $element, $attrs){
 				var un = $scope.$watch('articleData', function(data){
 					if(data){
-						F.initData(data, $scope);
+						_.extend($scope, F.initData(data));
+
 						un();
 					}
 				});

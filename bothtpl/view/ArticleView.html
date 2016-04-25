@@ -1,8 +1,18 @@
 
 <div class="hw-hwArticleViewComp">
-	<h4 class="hw-title">{{::article.title}}</h4>
-	<p></p>
+	<div class="ca">
+		<h4 class="hw-title">{{::article.title}}</h4>
+		<p>
+			<span class="hw-sp">{{article.time}}</span>
+			<span style="float: right;" class="hw-sp">阅读 {{::article.reads}}</span>
+		</p>
 
-	<div class="hw-article" data-ng-bind-html="article.msgbody">
+		<div class="hw-article" data-ng-bind-html="article.msgbody"></div>
 	</div>
+
+	<div class="list hw-article-list" style="margin-top:24px;">
+		<dd>本店文章</dd>
+	</div>
+
+
 </div>

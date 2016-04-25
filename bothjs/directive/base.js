@@ -28,3 +28,13 @@ KG.App.directive('hwSiteHomeTopNav', [
 		};
 	}
 ]);
+
+KG.App.directive('hwSiteFooter', [
+	function(){
+		return {
+			restrict : 'E',
+			replace : true,
+			templateUrl : util.getTplPath('home/Footer')
+		};
+	}
+]);
