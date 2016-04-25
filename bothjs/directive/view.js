@@ -36,3 +36,38 @@ KG.App.directive('hwStoreViewComp', [
 		};
 	}
 ]);
+
+KG.App.directive('hwArticleViewComp', [
+	function(){
+		var C = {
+
+		};
+		var F = {
+			initData : function(data, $scope){
+				$scope.article = data.view;
+			}
+		};
+
+		return {
+			restrict : 'E',
+			replace : true,
+			templateUrl : util.getTplPath('view/ArticleView'),
+			scope : {
+				articleData : '='
+			},
+			controller : function($scope, $element, $attrs){
+				var un = $scope.$watch('articleData', function(data){
+					if(data){
+						F.initData(data, $scope);
+						un();
+					}
+				});
+			},
+
+
+			link : function($scope){
+
+			}
+		};
+	}
+]);

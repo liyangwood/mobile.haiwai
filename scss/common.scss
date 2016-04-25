@@ -79,3 +79,19 @@ a{
         }
     }
 }
+
+.hw-header{
+    background: $blue-color;
+
+    .title{
+        color: #ffffff;
+    }
+
+    .icon{
+        color: #ffffff;
+        font-size: 24px;
+        &:before{
+            font-size: 18px;
+        }
+    }
+}

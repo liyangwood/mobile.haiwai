@@ -1,0 +1,15 @@
+.hw-hwArticleViewComp{
+    padding: 0 15px;
+    .hw-title{
+        font-size: 42px;
+        font-size: $color-4a;
+        font-weight: normal;
+        margin: 20px 0;
+    }
+
+    .hw-article{
+        font-size: 32px;
+        line-height: 52px;
+        color: $color-4a;
+    }
+}

@@ -24,6 +24,10 @@ KG.request = {
 			delete opts.jsonp;
 		}
 
+		if(type === 'get'){
+			dataType = 'jsonp';
+		}
+
 		$.ajax({
 			type : type,
 			url : url,
