@@ -533,6 +533,13 @@ KG.App.factory('$helper', function(
             }
 
             return rs;
+        },
+
+        formatPhone : function(num){
+            var rs = num.toString().split('');
+            rs.splice(3, 0, '-');
+            rs.splice(7, 0, '-');
+            return rs.join('');
         }
     };
 

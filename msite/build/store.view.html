@@ -29,6 +29,8 @@
 <script src="../bothjs/helper.js"></script>
 <script src="../bothjs/user.js"></script>
 
+<script src="../bothjs/factory/ImagePreviewFactory.js"></script>
+
 <script src="../bothjs/directive/base.js"></script>
 <script src="../bothjs/directive/view.js"></script>
 
@@ -39,12 +41,46 @@
 
 <!-- endbuild -->
 </head>
-<body ng-app="HaiWaiApp" ng-controller="StoreViewCtrl">
+<body ng-app="HaiWaiApp">
 
-<ion-content class="hw-content no_header">
-	<hw-store-view-comp store="store"></hw-store-view-comp>
+<ion-nav-bar animation="nav-title-slide-ios7"
+             type="bar-positive"
+             class="hw-base-header">
+	<ion-nav-back-button class="button-clear hw-back">
+		<i class="icon ion-ios-arrow-left"></i> 返回
+	</ion-nav-back-button>
+</ion-nav-bar>
 
-</ion-content>
+<ion-nav-view></ion-nav-view>
 
 </body>
 </html>
+
+<script type="text/javascript">
+
+	KG.App.provider('appRouter', function($stateProvider){
+		_.extend(this, {
+			init : function(){
+				$stateProvider.state('index', {
+					url : '/',
+					templateUrl : util.getTplPath('msite/store.view'),
+					controller : 'StoreViewCtrl'
+				}).state('more', {
+					url : '/moreinfo',
+					templateUrl : util.getTplPath('msite/store.view.more'),
+					controller : 'StoreViewMoreInfoCtrl'
+				});
+			}
+		});
+		this.$get = function(){};
+
+	});
+
+	KG.App.config(function($stateProvider, $urlRouterProvider, appRouterProvider){
+		//配置路由
+		appRouterProvider.init();
+		$urlRouterProvider.otherwise('/');
+
+	});
+
+</script>

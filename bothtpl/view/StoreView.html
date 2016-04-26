@@ -1,15 +1,86 @@
 
 <div class="hw-hwStoreViewComp">
-	<div class="hw-bg">
-		<img class="c-bg" ng-src="{{::store.bg}}" />
+	<ion-slide-box
+		ng-if="store.files.length > 0"
+		does-continue="true"
+		auto-play="true"
+		slide-interval="5000"
+		on-slide-changed="slideChange($index)"
+		show-pager="false"
+		class="hw-slide-image">
+		<ion-slide ng-repeat="item in store.filesList track by $index">
+			<hw-loading-image ng-click="clickSlideImage($index)" class="box" img-src="{{::item}}"></hw-loading-image>
+		</ion-slide>
+	</ion-slide-box>
+	<p ng-if="store.files.length > 0" class="hw-num">{{num.current}} / {{::num.total}}</p>
 
-
+	<div class="hw-info">
+		<hw-loading-image ng-click="clickSlideImage($index)" class="hw-img" img-src="{{::fn.logoPath(store)}}"></hw-loading-image>
+		<h4>{{::fn.bizName(store)}}</h4>
+		<p>
+			<hw-star-num star-num="{{::store.star}}"></hw-star-num>
+			<span style="margin-left:5px;position: relative;top:-1px;" class="hw-sp">{{::store
+				.commentnum}}条评论</span>
+		</p>
+		<p class="hw-sp">{{::store.tagNameList}}</p>
 	</div>
 
-	<div class="list hw-list">
-		<div class="hw-s1">
-			<span>地址</span>
-			<span>{{::store.fullAddress}}</span>
+	<div class="list hw-list" style="margin-top:20px;">
+		<div class="item item-icon-left item-icon-right">
+			<i class="hw-icon icon-clock"></i>
+			{{::timeinfo.today}}
+
+			<i ng-if="timeinfo.flag==='down'" ng-click="timeinfoDown()" class="icon ion-ios-arrow-down"></i>
+			<i ng-if="timeinfo.flag==='up'" ng-click="timeinfoUp()" class="icon ion-ios-arrow-up"></i>
 		</div>
+		<div class="hw-atm" ng-if="timeinfo.flag==='up'" data-ng-bind-html="::timeinfo.all"></div>
+
+		<div ng-click="goToMap()" class="item item-icon-left item-icon-right">
+			<i class="hw-icon icon-location"></i>
+			{{::fn.fullAddress(store)}}
+			<i class="icon ion-ios-arrow-right"></i>
+		</div>
+		<a class="item item-icon-left" ng-href="tel:{{::store.tel}}">
+			<i class="hw-icon icon-phone"></i>
+			{{::fn.formatPhone(store.tel)}}
+		</a>
+		<div ng-if="store.wechat" class="item item-icon-left">
+			<i class="hw-icon icon-wechat" style="top: 13px;"></i>
+			{{::store.wechat}}
+		</div>
+		<div class="item item-icon-left item-icon-right js_desc"
+		     ng-if="store.briefintro"
+			style="white-space: normal;height:auto;line-height: 20px;padding-top:8px;padding-bottom:8px;">
+			<i class="hw-icon icon-group"></i>
+			{{::description}}
+			<i ng-click="slideDownDesc()" class="icon ion-ios-arrow-down"></i>
+		</div>
+		<a href="#/moreinfo"
+		   ng-if="showMoreBtn"
+		   class="item item-icon-left">
+			<i class="hw-icon icon-more"></i>
+			更多信息
+		</a>
 	</div>
+
+	<div class="list hw-coupon-list" style="margin-top:20px;">
+		<dd class="c-title">本店优惠</dd>
+
+		<a ng-repeat="item in store.events track by item.pk_id"
+		   class="item item-thumbnail-left" href="">
+			<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(item)}}"></hw-loading-image>
+			<h2>{{::item.subject}}</h2>
+			<span class="c-sp">{{::item.count}}人已领取</span>
+		</a>
+	</div>
+
+	<div class="list hw-article-list" style="margin-top:20px;">
+		<dd class="c-title">本店文章</dd>
+
+		<a ng-repeat="item in store.articles track by item.id" class="item item-thumbnail-left" href="{{::fn.path.article(item.id)}}">
+			<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(item)}}"></hw-loading-image>
+			<h2>{{::item.title}}</h2>
+		</a>
+	</div>
+
 </div>

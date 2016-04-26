@@ -11,10 +11,21 @@ KG.App.controller('StoreViewCtrl', [
 		}, function(flag, rs){
 			KG.helper.loading.hide();
 			console.log(rs);
+			if(flag){
+				util.storage.set('hw-store-baseinfo', rs);
+				$scope.store = rs;
+			}
 
-			$scope.store = rs;
 		});
 
+	}
+]);
+
+KG.App.controller('StoreViewMoreInfoCtrl', [
+	'$scope',
+	function($scope){
+		var store = util.storage.get('hw-store-baseinfo');
+		$scope.store = store;
 	}
 ]);
 

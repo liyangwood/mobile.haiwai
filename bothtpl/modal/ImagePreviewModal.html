@@ -1,0 +1,24 @@
+<ion-modal-view class="hw-image-preview-modal">
+
+	<button class="button button-clear hw-close"
+	        ng-click="closeModal()"><i class="icon ion-ios-close-outline"></i></button>
+
+	<ion-slide-box
+		class="hw-box"
+		delegate-handle="hw-image-preview-slide"
+		active-slide="currentIndex"
+		on-slide-changed="slideTo($index)"
+		show-pager="false">
+
+		<ion-slide class="hw-slide" ng-repeat="src in data">
+			<ion-scroll direction="xy" zooming="true" min-zoom="1">
+				<img ng-src="{{::src}}"/>
+			</ion-scroll>
+
+
+		</ion-slide>
+
+	</ion-slide-box>
+	<div class="hw-pager">{{currentIndex+1}}/{{data.length}}</div>
+
+</ion-modal-view>

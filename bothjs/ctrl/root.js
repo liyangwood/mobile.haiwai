@@ -24,20 +24,12 @@ KG.App.run(function(
 			return biz.name_cn || biz.name_en;
 		},
 		fullAddress : function(biz){
-			var rs = biz.address;
-			if(biz.city){
-				rs += ', '+biz.city;
-			}
-			if(biz.state){
-				rs += ', '+biz.state;
-			}
-			if(biz.zip){
-				rs += ' '+biz.zip;
-			}
-
-			return rs;
+			return KG.helper.biz.fullAddress(biz);
 		},
-		path : util.path
+		path : util.path,
+		formatPhone : function(phone){
+			return KG.helper.biz.formatPhone(phone);
+		}
 	};
 
 	KG.user.checkLogin(function(){

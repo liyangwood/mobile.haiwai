@@ -1,0 +1,22 @@
+
+<ion-view view-title="更多信息">
+
+	<ion-content class="hw-content hw-storeViewMoreInfo">
+		<div class="hw-list list">
+			<a ng-href="{{::fn.absPath(store.website)}}"
+			   ng-if="store.website"
+			   class="item item-icon-right">
+				网址 : {{::fn.absPath(store.website)}}
+			</a>
+
+			<div ng-repeat="item in store.dyfields"
+			     ng-if="item.value"
+			     class="item">
+				{{::item.field_name}} : {{::item.value}}
+			</div>
+		</div>
+
+
+		<hw-site-footer></hw-site-footer>
+	</ion-content>
+</ion-view>

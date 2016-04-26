@@ -85,3 +85,40 @@ KG.App.directive('hwLoadingImage', function(){
 
 	return F;
 });
+
+KG.App.directive('hwStarNum', [
+	function(){
+		return {
+			restrict : 'E',
+			replace : true,
+			template : function(){
+				var h = '<label class="hw-star-num">';
+				return h+'</label>';
+			},
+			controller : function($scope, $element, $attrs){
+
+				$attrs.$observe('starNum', function(val){
+					var h = '';
+					var len = parseFloat(val) || 0;
+
+					for(var i= 0; i<5; i++){
+						if(i+0.5 === len){
+							h += '<i class="icon ion-android-star-half" ></i>';
+						}
+						else if(i<len){
+							h += '<i class="icon ion-android-star"></i>';
+						}
+						else{
+							h += '<i class="icon ion-android-star-outline"></i>';
+						}
+
+					}
+
+					$element.html(h);
+				});
+
+
+			}
+		};
+	}
+]);

@@ -3,14 +3,36 @@ $c77-color : #777;
 $c9b-color : #9b9b9b;
 $yellow-color : #f4a62a;
 $color-4a : #4a4a4a;
+@mixin flex_center{
+    display: flex;
+
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+@mixin no_wrap{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
 .hw-content{
-    margin-top: 44px;
+    //margin-top: 44px;
     background: #f7f7f7;
+
+    &>div.scroll{
+        padding-bottom: 150px;
+        min-height: 100%;
+    }
 }
 
 a{
     text-decoration: none;
+}
+p{
+    margin-bottom: 0;
 }
 
 .pd{
@@ -102,8 +124,12 @@ a{
 }
 
 .hw-footer{
-    margin-top: 40px;
     text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
 
     .hw-logo{
         width: 160px;
@@ -111,7 +137,7 @@ a{
     }
 
     small{
-        margin: 0 auto 12px;
+        margin: 0 auto 20px;
         font-size: 12px;
         color: #cecece;
         display: block;
@@ -136,11 +162,64 @@ a{
         background: #f5f5f5;
         text-align: center;
         height: 240px;
+        overflow: hidden;
 
         .hw-img{
             height: 100%;
             max-width: 100%;
         }
+    }
+}
+
+.hw-image-preview-modal{
+    width: 100%;
+    height: 100%;
+    background: #000;
+
+    .hw-box{
+        height: 100%;
+    }
+
+    .hw-slide{
+        width: 100%;
+        height: 70%;
+        top: 15%;
+        @include flex_center;
+
+
+        ion-scroll, div.scroll{
+            width: 100%;
+            height: 100%;
+            @include flex_center;
+        }
+    }
+
+    img{
+        width: 100%;
+        max-height: 100%;
+    }
+
+    .hw-close{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 99;
+
+        i:before{
+            font-size: 36px;
+            color: #fff;
+        }
+    }
+    .hw-pager{
+        position: absolute;
+        width: 80%;
+        left: 10%;
+        z-index: 99;
+        bottom: 0;
+        height: 10%;
+        font-size: 18px;
+        color: #fff;
+        text-align: center;
     }
 }
 
@@ -254,6 +333,45 @@ a{
             color: $color-4a;
             font-weight: normal;
             white-space: normal;
+        }
+    }
+}
+
+.hw-coupon-list{
+    background: #ffffff;
+    .c-title{
+        font-size: 15px;
+        color: #9b9b9b;
+        padding: 12px 15px;
+    }
+    .item{
+        min-height: 74px;
+        padding-bottom: 10px;
+
+        .hw-img{
+            width: 80px;
+            height: 56px;
+            position: absolute;
+            overflow: hidden;
+            left: 15px;
+            top: 8px;
+        }
+
+        h2{
+            font-size: 19px;
+            line-height: 24px;
+            height: 26px;
+            margin-top: 0;
+            font-weight: normal;
+            white-space: normal;
+            color: $yellow-color;
+        }
+
+        .c-sp{
+            font-size: 12px;
+            color: #777;
+            display: inline-block;
+            margin-top: 4px;
         }
     }
 }

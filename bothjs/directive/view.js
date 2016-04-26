@@ -1,13 +1,142 @@
 
 KG.App.directive('hwStoreViewComp', [
-	function(){
+	'$rootScope',
+	'ImagePreviewFactory',
+	function($rootScope,ImagePreviewFactory){
+		var C = {};
 		var F = {
-			makeStoreData : function(data){
-				var store = data;
-				store.bg = data.background_pic;
-				store.fullAddress = KG.helper.biz.fullAddress(data);
+			goToMap : function(address, city){
+				var url = 'https://www.google.com/maps/place/'+address+' '+city;
+				KG.helper.openUrl(url);
+			},
+			initData : function(data, $scope, elem){
+				$scope.store = data;
+				C.store = data;
+				C.elem = elem;
+				C.scope = $scope;
 
-				return store;
+				$scope.num = {
+					total : data.files.length,
+					current : 1
+				};
+
+				$scope.slideChange = function(index){
+					$scope.num.current = index+1;
+
+				};
+
+				$scope.store.filesList = _.map($scope.store.files, function(item){
+					return $scope.fn.absPath(item.path);
+				});
+
+				$scope.clickSlideImage = function(index){
+					ImagePreviewFactory.show($scope.store.filesList[index], $scope.store.filesList);
+				};
+
+				$scope.store.tagNameList = _.map(data.tags, function(item){
+					return item.name;
+				}).join(', ');
+
+				F.initDescription();
+				F.initMoreInfo();
+				F.initTimeinfo();
+
+				$scope.goToMap = function(){
+					F.goToMap($scope.store.address, $scope.store.city);
+				};
+			},
+			initDescription : function(){
+				C.scope.description = util.removeHtmlTag(C.store.briefintro);
+
+				_.delay(function(){
+					var box = C.elem.find('.js_desc');
+					var hh = box.height();
+					if(hh>56){
+						box.height(56);
+					}
+					else{
+						box.height('auto');
+						box.removeClass('item-icon-right');
+						box.find('i.icon').remove();
+					}
+
+					C.scope.slideDownDesc = function(){
+						box.height('auto');
+						box.removeClass('item-icon-right');
+						box.find('i.icon').remove();
+					};
+				}, 100);
+
+			},
+			initMoreInfo : function(){
+				C.scope.showMoreBtn = false;
+				if((C.store.dyfields && C.store.dyfields.length > 0) || C.store.website){
+					_.each(C.store.dyfields, function(item){
+						if(item.value){
+							C.scope.showMoreBtn = true;
+						}
+					});
+
+				}
+			},
+			initTimeinfo : function(){
+				var ST = [
+					['sunday', '周日'],
+					['monday', '周一'],
+					['tuesday', '周二'],
+					['wednesday', '周三'],
+					['thursday', '周四'],
+					['friday', '周五'],
+					['saturday', '周六']
+
+				];
+				C.timeinfo = {
+					today : '营业时间未设置',
+					flag : false
+				};
+				var today = moment().day();
+				_.each(C.store.timeinfo.unformat, function(item){
+					if(item[ST[today][0]] === '1'){
+						C.timeinfo.flag = 'down';
+						C.timeinfo.today = '今天 : '+item.datetime1+' - '+item.datetime2;
+					}
+				});
+
+				//var xx = '', arr = [];
+				//_.each(C.store.timeinfo.unformat, function(val){
+				//	_.each(ST, function(day){
+				//
+				//	});
+				//});
+
+				var xx = '';
+				_.each(C.store.timeinfo.format, function(val, key){
+					key = key.split(' - ');
+					var s = key[0],
+						e = key[1];
+					console.log(e);
+					s = _.find(ST, function(one){
+						return one[0] === s;
+					});
+					e = _.find(ST, function(one){
+						return one[0] === e;
+					});
+					console.log(s, e);
+
+					_.each(val, function(one){
+						xx += s[1]+' - '+e[1]+' : '+one.replace(',', ' - ')+'<br/>';
+					});
+				});
+				C.timeinfo.all = xx;
+
+
+				C.scope.timeinfo = C.timeinfo;
+				C.scope.timeinfoDown = function(){
+					C.scope.timeinfo.flag = 'up';
+				};
+				C.scope.timeinfoUp = function(){
+					C.scope.timeinfo.flag = 'down';
+				};
 			}
 		};
 
@@ -18,19 +147,14 @@ KG.App.directive('hwStoreViewComp', [
 			scope : {
 				store : '='
 			},
-
-
-
-			link : function($scope){
-
+			controller : function($scope, $element){
 				var un = $scope.$watch('store', function(val){
 					if(val){
-						$scope.store = F.makeStoreData(val);
+						$scope.fn = $rootScope.fn;
+						F.initData(val, $scope, util.jq($element[0]));
 						un();
 					}
 				});
-
-
 
 			}
 		};
