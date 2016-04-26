@@ -1,0 +1,68 @@
+<div class="hw-hwCouponViewComp">
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCjKJoA5eBc75v5pQurBQ3IjP4vNkfoOzw"></script>
+
+	<div class="ca">
+		<ion-slide-box
+			ng-if="coupon.files.length > 0"
+			does-continue="true"
+			auto-play="true"
+			slide-interval="5000"
+			show-pager="false"
+			class="hw-slide-image">
+			<ion-slide ng-repeat="item in coupon.files">
+
+				<hw-loading-image class="box" img-src="{{::fn.absPath(item.path)}}"></hw-loading-image>
+
+			</ion-slide>
+
+		</ion-slide-box>
+
+		<div class="hw-bizinfo-style1 list"
+		     style="position: absolute;left: 0;width: 100%;top:176px;"
+		     ng-if="coupon.files.length > 0">
+			<a class="item item-avatar item-icon-right" ng-href="{{::fn.path.store(coupon.bizinfo.entityID)}}">
+				<!--<img ng-src="{{::fn.logoPath(article.bizinfo)}}" />-->
+				<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(coupon.bizinfo)}}"></hw-loading-image>
+				<h2>{{::fn.bizName(coupon.bizinfo)}}</h2>
+				<p>{{::fn.fullAddress(coupon.bizinfo)}}</p>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+		</div>
+
+		<div class="hw-bizinfo-style list"
+		     style="margin:0;"
+		     ng-if="coupon.files.length < 1">
+			<a class="item item-avatar item-icon-right"
+			   style="border-top:none;border-bottom:1px solid #ebebeb;"
+			   ng-href="{{::fn.path.store(coupon.bizinfo.entityID)}}">
+				<!--<img ng-src="{{::fn.logoPath(article.bizinfo)}}" />-->
+				<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(coupon.bizinfo)}}"></hw-loading-image>
+				<h2>{{::fn.bizName(coupon.bizinfo)}}</h2>
+				<p>{{::fn.fullAddress(coupon.bizinfo)}}</p>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+		</div>
+
+		<h4 class="hw-title pd">{{::coupon.subject}}</h4>
+		<p class="hw-tlt">优惠详情</p>
+		<div class="hw-dd pd">
+			<label>优惠日期：</label>
+			<p>{{::coupon.duration}}</p>
+			<label>活动详情：</label>
+			<p>{{::coupon.description}}</p>
+			<label>领取方式：</label>
+			<p>需要向商家出示coupon领取后收到的短信号码</p>
+		</div>
+	</div>
+
+
+	<div class="hw-map">
+		<img ng-click="goToMap()" ng-src="{{::googleMapImage}}" />
+	</div>
+	<div ng-click="goToMap()" class="hw-address">
+		地址 {{::fn.fullAddress(coupon.bizinfo)}}
+		<i class="icon ion-ios-arrow-right"></i>
+	</div>
+
+
+</div>

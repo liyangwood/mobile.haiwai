@@ -2,12 +2,19 @@ KG.App.run(function($helper){
 	$helper.init();
 });
 
+
 KG.App.run(function(
 	$rootScope
 ){
 	$rootScope.fn = {
 		logoPath : function(biz){
 			var path = biz.logo[0].path;
+			if(!/^http/.test(path)){
+				path = KG.config.SiteRoot+path;
+			}
+			return path;
+		},
+		absPath : function(path){
 			if(!/^http/.test(path)){
 				path = KG.config.SiteRoot+path;
 			}
@@ -32,4 +39,8 @@ KG.App.run(function(
 		},
 		path : util.path
 	};
+
+	KG.user.checkLogin(function(){
+		$rootScope.user = KG.user.get();
+	});
 });

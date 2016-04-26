@@ -34,3 +34,20 @@ KG.App.controller('ArticleViewCtrl', [
 		});
 	}
 ]);
+
+KG.App.controller('CouponViewCtrl', [
+	'$scope',
+	function($scope){
+		var couponID = util.url.param('id');
+		KG.helper.loading.show();
+		KG.request.getCouponDetail({
+			id : couponID
+		}, function(flag, rs){
+			KG.helper.loading.hide();
+			console.log(rs);
+			if(flag){
+				$scope.coupon = rs;
+			}
+		});
+	}
+]);
