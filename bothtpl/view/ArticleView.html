@@ -1,17 +1,42 @@
 
 <div class="hw-hwArticleViewComp">
 	<div class="ca">
-		<h4 class="hw-title">{{::article.title}}</h4>
-		<p>
-			<span class="hw-sp">{{article.time}}</span>
+		<h4 class="hw-title pd">{{::article.title}}</h4>
+		<p class="pd">
+			<span class="hw-sp">{{::article.time}}</span>
 			<span style="float: right;" class="hw-sp">阅读 {{::article.reads}}</span>
 		</p>
 
-		<div class="hw-article" data-ng-bind-html="article.msgbody"></div>
+		<div class="hw-bizinfo-style list" ng-if="article.bizinfo">
+			<a class="item item-avatar item-icon-right" ng-href="{{::fn.path.store(article.bizinfo.entityID)}}">
+				<!--<img ng-src="{{::fn.logoPath(article.bizinfo)}}" />-->
+				<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(article.bizinfo)}}"></hw-loading-image>
+				<h2>{{::fn.bizName(article.bizinfo)}}</h2>
+				<p>{{::fn.fullAddress(article.bizinfo)}}</p>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+		</div>
+
+		<div class="hw-article pd" data-ng-bind-html="article.msgbody"></div>
 	</div>
 
 	<div class="list hw-article-list" style="margin-top:24px;">
-		<dd>本店文章</dd>
+		<dd class="c-title">本店文章</dd>
+
+		<a ng-repeat="item in list track by item.id" class="item" href="#">
+			<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(item)}}"></hw-loading-image>
+			<h2>{{::item.title}}</h2>
+		</a>
+	</div>
+
+	<div class="list hw-article-list" style="margin-top:24px;">
+		<dd class="c-title">热门文章</dd>
+
+		<a ng-repeat="item in hotList track by item.id" class="item item-thumbnail-left"
+		   href="{{::fn.path.article(item.id)}}">
+			<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(item)}}"></hw-loading-image>
+			<h2>{{::item.title}}</h2>
+		</a>
 	</div>
 
 

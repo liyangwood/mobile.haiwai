@@ -7,6 +7,10 @@
 	_.extend(util, _);
 
 	util.extend(util, {
+		jq : function(angulerElement){
+			return $(angulerElement);
+		},
+
 		addUserIdToRequestData : function(data){
 			data = data || {};
 			data.userid = KG.user.get('userid');
@@ -262,20 +266,10 @@
 		},
 
 		article : function(id){
-			return '../view/article.html?id='+id;
+			return 'article.view.html?id='+id;
 		},
 		store : function(id){
-			return '../view/store.html?id='+id;
-		},
-
-		toMSiteStore : function(id){
-			return KG.config.SiteRoot+'/mobile/ionic/store.html?id='+id;
-		},
-		toMSiteArticle : function(id){
-			return KG.config.SiteRoot+'/mobile/ionic/article.html?id='+id;
-		},
-		toMSiteCoupon : function(id){
-			return KG.config.SiteRoot+'/mobile/ionic/action.html?id='+id;
+			return 'store.view.html?id='+id;
 		}
 	};
 

@@ -38,3 +38,50 @@ KG.App.directive('hwSiteFooter', [
 		};
 	}
 ]);
+
+KG.App.directive('hwLoadingImage', function(){
+
+	var F = {
+		restrict : 'E',
+		replace : true,
+		template : function(){
+			return '<div class="hw-center-image"><ion-spinner></ion-spinner></div>';
+		},
+
+		controller : function($scope, $element, $attrs){
+			var elem = util.jq($element);
+			$attrs.$observe('imgSrc', function(val){
+				var w = elem.width(),
+					h = elem.height();
+				var ww, hh;
+
+				var img = new Image();
+				img.src = val;
+
+				var sy = 'position:absolute;',
+					f = 'width';
+				util.jq(img).bind('load', function(){
+					if(img.width/img.height >= w/h){
+						ww = Math.ceil(img.width*h/img.height);
+						sy += 'width:'+ww+'px;height:100%;top:0;left:'+((w-ww)/2)+'px';
+
+					}
+					else{
+						sy += 'width:100%;height:auto;left:0;top:0;';
+						f = 'height';
+					}
+
+					$(this).attr('style', sy);
+					$element.empty().append(img);
+
+				});
+
+
+			});
+
+		}
+	};
+
+
+	return F;
+});
