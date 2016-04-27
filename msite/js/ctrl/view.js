@@ -25,6 +25,14 @@ KG.App.controller('StoreViewMoreInfoCtrl', [
 	'$scope',
 	function($scope){
 		var store = util.storage.get('hw-store-baseinfo');
+
+		store.dyfields = _.map(store.dyfields, function(item){
+			if(_.isArray(item.value)){
+				item.value = item.value.join(', ');
+			}
+			return item;
+		});
+
 		$scope.store = store;
 	}
 ]);

@@ -48,3 +48,19 @@
         }
     }
 }
+
+.hw-loading-more{
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+
+    div{
+        font-size: 17px;
+        color: #777777;
+        height: 42px;
+        line-height: 42px;
+
+        ion-spinner{
+            height: 28px;
+        }
+    }
+}

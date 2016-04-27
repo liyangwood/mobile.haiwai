@@ -1,18 +1,19 @@
 
 <div class="hw-hwStoreViewComp">
 	<ion-slide-box
-		ng-if="store.files.length > 0"
-		does-continue="true"
+		ng-if="store.files.length"
+		does-continue="{{::store.filesLoop}}"
 		auto-play="true"
 		slide-interval="5000"
 		on-slide-changed="slideChange($index)"
 		show-pager="false"
+		delegate-handle="js_image"
 		class="hw-slide-image">
 		<ion-slide ng-repeat="item in store.filesList track by $index">
 			<hw-loading-image ng-click="clickSlideImage($index)" class="box" img-src="{{::item}}"></hw-loading-image>
 		</ion-slide>
 	</ion-slide-box>
-	<p ng-if="store.files.length > 0" class="hw-num">{{num.current}} / {{::num.total}}</p>
+	<p ng-if="store.files.length" class="hw-num">{{num.current}} / {{::num.total}}</p>
 
 	<div class="hw-info">
 		<hw-loading-image ng-click="clickSlideImage($index)" class="hw-img" img-src="{{::fn.logoPath(store)}}"></hw-loading-image>
@@ -67,7 +68,8 @@
 		<dd class="c-title">本店优惠</dd>
 
 		<a ng-repeat="item in store.events track by item.pk_id"
-		   class="item item-thumbnail-left" href="">
+		   class="item item-thumbnail-left"
+		   ng-href="{{::fn.path.coupon(item.pk_id)}}">
 			<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(item)}}"></hw-loading-image>
 			<h2>{{::item.subject}}</h2>
 			<span class="c-sp">{{::item.count}}人已领取</span>
@@ -77,10 +79,36 @@
 	<div class="list hw-article-list" style="margin-top:20px;">
 		<dd class="c-title">本店文章</dd>
 
-		<a ng-repeat="item in store.articles track by item.id" class="item item-thumbnail-left" href="{{::fn.path.article(item.id)}}">
+		<a ng-repeat="item in store.articles track by item.id" class="item item-thumbnail-left" ng-href="{{::fn.path.article(item.id)}}">
 			<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(item)}}"></hw-loading-image>
 			<h2>{{::item.title}}</h2>
 		</a>
+	</div>
+
+	<div class="hw-rpbox">
+		<dd class="b-title">评论（{{reply.total}}）</dd>
+		<dd ng-repeat="item in reply.list track by item.id"
+		    ng-init="index=$index"
+		    class="b-each">
+			<div class="b-info">
+				<img class="hw-user" ng-src="{{::fn.absPath(item.userinfo.avatar_url)}}" />
+				<label>{{::item.userinfo.nick}}</label>
+				<hw-star-num star-num="{{::item.star}}"></hw-star-num>
+			</div>
+			<p class="b-msg" data-ng-bind-html="::item.msgbody"></p>
+			<div ng-if="item.pic.length > 0" class="b-igbox">
+				<hw-loading-image ng-repeat="src in item.pic track by $index" class="b-img"
+				                  ng-init="i=$index"
+				                  ng-click="reply.clickImage(index, i)"
+				                  ng-class="::reply.imgClass"
+				                  img-src="{{::src}}"></hw-loading-image>
+			</div>
+		</dd>
+		<dd class="b-empty hw-center-image" ng-if="reply.list.length < 1">本店暂无评论</dd>
+		<dd ng-if="reply.loadmore" class="hw-loading-more">
+			<div ng-if="reply.loadmore==='loading'" class="hw-center-image"><ion-spinner></ion-spinner></div>
+			<div ng-if="reply.loadmore==='normal'" ng-click="reply.clickLoadMore()" class="hw-center-image">更多评论</div>
+		</dd>
 	</div>
 
 </div>

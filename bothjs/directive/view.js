@@ -2,7 +2,8 @@
 KG.App.directive('hwStoreViewComp', [
 	'$rootScope',
 	'ImagePreviewFactory',
-	function($rootScope,ImagePreviewFactory){
+	'$ionicSlideBoxDelegate',
+	function($rootScope, ImagePreviewFactory, $ionicSlideBoxDelegate){
 		var C = {};
 		var F = {
 			goToMap : function(address, city){
@@ -25,9 +26,20 @@ KG.App.directive('hwStoreViewComp', [
 
 				};
 
-				$scope.store.filesList = _.map($scope.store.files, function(item){
+				var filesList = _.map($scope.store.files, function(item){
 					return $scope.fn.absPath(item.path);
 				});
+				$scope.store.filesList = filesList;
+				if(filesList.length === 2){
+					//TODO 这里是因为slidebox的item＝2的时候，会自动复制item到4个，导致错误
+					// https://github.com/driftyco/ionic/issues/3609
+					$scope.store.filesLoop = false;
+				}
+				else{
+					$scope.store.filesLoop = true;
+				}
+
+
 
 				$scope.clickSlideImage = function(index){
 					ImagePreviewFactory.show($scope.store.filesList[index], $scope.store.filesList);
@@ -44,6 +56,11 @@ KG.App.directive('hwStoreViewComp', [
 				$scope.goToMap = function(){
 					F.goToMap($scope.store.address, $scope.store.city);
 				};
+
+				F.initReplyBox();
+
+
+
 			},
 			initDescription : function(){
 				C.scope.description = util.removeHtmlTag(C.store.briefintro);
@@ -137,6 +154,62 @@ KG.App.directive('hwStoreViewComp', [
 				C.scope.timeinfoUp = function(){
 					C.scope.timeinfo.flag = 'down';
 				};
+			},
+
+			initReplyBox : function(){
+				C.scope.reply = {
+					list : [],
+					lastid : null,
+					imgClass : $(window).width()>330 ? 'hw-big' : 'hw-small',
+					loadmore : false,
+					clickLoadMore : function(){
+						C.scope.reply.loadmore = 'loading';
+						getData(function(json){
+
+							util.angular.apply(C.scope, function(){});
+						});
+					}
+				};
+
+				var getData = function(callback){
+					KG.request.getStoreCommentData({
+						lastid : C.scope.reply.lastid,
+						bizId : C.store.entityID
+					}, function(flag, rs){
+						if(flag){
+
+							C.scope.reply.list = C.scope.reply.list.concat(rs.list);
+							if(_.last(rs.list)){
+								C.scope.reply.lastid = _.last(rs.list).id;
+							}
+
+							if(rs.list.length > 9){
+								C.scope.reply.loadmore = 'normal';
+							}
+							else{
+								C.scope.reply.loadmore = false;
+							}
+
+							callback(rs);
+						}
+					});
+				};
+
+				getData(function(json){
+					C.scope.reply.total = json.count.all;
+					util.angular.apply(C.scope, function(){});
+
+
+					C.scope.reply.clickImage = function(index, n){
+						var list = C.scope.reply.list[index].pic;
+						console.log(index, n);
+						ImagePreviewFactory.show(list[n], list);
+					};
+
+
+				});
+
+
 			}
 		};
 

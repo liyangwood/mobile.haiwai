@@ -82,7 +82,7 @@ p {
     width: 160px;
     margin: 20px auto 10px; }
   .hw-footer small {
-    margin: 0 auto 20px;
+    margin: 0 auto 12px;
     font-size: 12px;
     color: #cecece;
     display: block; }
@@ -308,6 +308,17 @@ p {
       color: #ffffff;
       font-size: 24px; }
 
+.hw-loading-more {
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb; }
+  .hw-loading-more div {
+    font-size: 17px;
+    color: #777777;
+    height: 42px;
+    line-height: 42px; }
+    .hw-loading-more div ion-spinner {
+      height: 28px; }
+
 .cp-site-header {
   background: #37bccd; }
   .cp-site-header input::-webkit-input-placeholder {
@@ -431,6 +442,63 @@ p {
   color: #4a4a4a;
   font-size: 14px;
   line-height: 24px; }
+.hw-hwStoreViewComp .hw-rpbox {
+  background: #ffffff;
+  padding-bottom: 0; }
+  .hw-hwStoreViewComp .hw-rpbox .b-title {
+    font-size: 15px;
+    color: #9b9b9b;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 15px; }
+  .hw-hwStoreViewComp .hw-rpbox .b-each {
+    margin-bottom: 25px;
+    padding: 0 15px; }
+    .hw-hwStoreViewComp .hw-rpbox .b-each:last-child {
+      padding-bottom: 15px; }
+    .hw-hwStoreViewComp .hw-rpbox .b-each .b-info {
+      height: 42px;
+      padding-left: 55px;
+      position: relative; }
+      .hw-hwStoreViewComp .hw-rpbox .b-each .b-info .hw-user {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 42px;
+        height: 42px;
+        border-radius: 21px; }
+      .hw-hwStoreViewComp .hw-rpbox .b-each .b-info label {
+        display: block;
+        font-size: 13px;
+        color: #777;
+        height: 22px;
+        line-height: 22px; }
+      .hw-hwStoreViewComp .hw-rpbox .b-each .b-info .hw-star-num .icon {
+        font-size: 16px; }
+    .hw-hwStoreViewComp .hw-rpbox .b-each .b-msg {
+      margin-top: 12px;
+      margin-bottom: 8px;
+      font-size: 17px;
+      line-height: 22px;
+      color: #4a4a4a; }
+    .hw-hwStoreViewComp .hw-rpbox .b-each .b-igbox {
+      height: auto; }
+      .hw-hwStoreViewComp .hw-rpbox .b-each .b-igbox .b-img {
+        display: inline-block;
+        margin-right: 5px;
+        width: 60px;
+        height: 60px;
+        overflow: hidden; }
+      .hw-hwStoreViewComp .hw-rpbox .b-each .b-igbox .hw-big {
+        width: 60px;
+        height: 60px; }
+      .hw-hwStoreViewComp .hw-rpbox .b-each .b-igbox .hw-small {
+        width: 50px;
+        height: 50px; }
+  .hw-hwStoreViewComp .hw-rpbox .b-empty {
+    font-size: 21px;
+    color: #9b9b9b;
+    height: 150px; }
 
 .hw-storeViewMoreInfo .hw-list .item {
   border: none;

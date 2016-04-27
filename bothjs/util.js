@@ -282,6 +282,9 @@
 		},
 		store : function(id){
 			return 'store.view.html?id='+id;
+		},
+		coupon : function(id){
+			return 'coupon.view.html?id='+id;
 		}
 	};
 
