@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title></title>
+
+<link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+<link href="../lib/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- build:css -->
+<link href="../css/style.css" rel="stylesheet">
+<!-- endbuild -->
+
+
+<script src="../lib/ionic/js/ionic.bundle.min.js"></script>
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/md5.min.js"></script>
+<script src="../lib/moment.min.js"></script>
+<script src="../lib/ng-cordova.min.js"></script>
+
+
+<!-- build:js_core -->
+<script src="../bothjs/core.js"></script>
+<script src="../bothjs/request.js"></script>
+<script src="../bothjs/util.js"></script>
+<script src="../bothjs/helper.js"></script>
+<script src="../bothjs/user.js"></script>
+
+<script src="../bothjs/factory/ImagePreviewFactory.js"></script>
+
+<script src="../bothjs/directive/base.js"></script>
+<script src="../bothjs/directive/view.js"></script>
+
+<script src="../bothjs/ctrl/root.js"></script>
+
+<script src="../js/ctrl/home.js"></script>
+<script src="../js/ctrl/view.js"></script>
+
+<!-- endbuild -->
+</head>
+<body ng-app="HaiWaiApp" ng-controller="CouponViewCtrl">
+
+
+
+<ion-content class="hw-content no_header">
+	<hw-coupon-view-comp coupon-data="coupon"></hw-coupon-view-comp>
+
+	<hw-site-footer></hw-site-footer>
+</ion-content>
+
+</body>
+</html>
