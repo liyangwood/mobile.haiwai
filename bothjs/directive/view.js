@@ -68,8 +68,8 @@ KG.App.directive('hwStoreViewComp', [
 				_.delay(function(){
 					var box = C.elem.find('.js_desc');
 					var hh = box.height();
-					if(hh>56){
-						box.height(56);
+					if(hh>60){
+						box.height(60);
 					}
 					else{
 						box.height('auto');
