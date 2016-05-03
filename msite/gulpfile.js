@@ -14,7 +14,21 @@ var baseCore = [
 
 var JS = {
 	core : baseCore.concat([
+		"../bothjs/core.js",
+		"../bothjs/request.js",
+		"../bothjs/util.js",
+		"../bothjs/helper.js",
+		"../bothjs/user.js",
 
+		"../bothjs/factory/ImagePreviewFactory.js",
+
+		"../bothjs/directive/base.js",
+		"../bothjs/directive/view.js",
+
+		"../bothjs/ctrl/root.js",
+
+		"js/ctrl/home.js",
+		"js/ctrl/view.js"
 	]),
 	core_min : 'core.min.js',
 	css_min : 'style.min.css'
@@ -22,11 +36,8 @@ var JS = {
 
 var v = new Date().getTime();
 var HtmlReplace = {
-	js_core : '../../js/dist/'+JS.core_min+'?v='+v,
-	css : '../../style/'+JS.css_min+'?v='+v,
-
-	site_core : '../../js/dist/'+JS.site_min+'?v='+v,
-	site_css : '../../style/'+JS.site_css_min+'?v='+v
+	js_core : '../dist/'+JS.core_min,
+	css : '../dist/'+JS.css_min+'?v='+v
 };
 
 var F = {
@@ -69,25 +80,17 @@ var F = {
 
 gulp.task('core', function(){
 	gulp.src(JS.core)
-		.pipe(uglify())
+		//.pipe(uglify())
 		.pipe(concat(JS.core_min))
-		.pipe(gulp.dest('./js/dist'));
+		.pipe(gulp.dest('./dist'));
 
-	gulp.src(JS.site_core)
-		.pipe(uglify())
-		.pipe(concat(JS.site_min))
-		.pipe(gulp.dest('./js/dist'));
 });
 gulp.task('css', function(){
-	gulp.src(['style/style.css'])
+	gulp.src(['css/style.css'])
 		.pipe(minifyCss({compatibility: 'ie8'}))
 		.pipe(concat(JS.css_min))
-		.pipe(gulp.dest('style/'));
+		.pipe(gulp.dest('./dist'));
 
-	gulp.src(['style/site.css'])
-		.pipe(minifyCss({compatibility: 'ie8'}))
-		.pipe(concat(JS.site_css_min))
-		.pipe(gulp.dest('style/'));
 });
 
 

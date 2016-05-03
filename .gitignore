@@ -8,4 +8,5 @@ scss/.sass-cache
 # msite
 msite/node_modules
 msite/page
+msite/dist
 
