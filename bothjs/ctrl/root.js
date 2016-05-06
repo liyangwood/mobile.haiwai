@@ -29,6 +29,11 @@ KG.App.run(function(
 		path : util.path,
 		formatPhone : function(phone){
 			return KG.helper.biz.formatPhone(phone);
+		},
+		goBack : function(){
+			try{
+				history.go(-1);
+			}catch(e){}
 		}
 	};
 

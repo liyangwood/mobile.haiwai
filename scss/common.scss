@@ -336,7 +336,8 @@ p{
         padding: 12px 15px;
     }
     .item{
-        min-height: 72px;
+        min-height: 76px;
+        height: 76px;
         padding-bottom: 12px;
 
         .hw-img{
@@ -356,6 +357,22 @@ p{
             color: $color-4a;
             font-weight: normal;
             white-space: normal;
+            display: flex;
+            align-items: center;
+        }
+
+        .c-small{
+            font-size: 16px;
+            margin-top: 2px;
+            height: 38px;
+            line-height: 18px;
+
+        }
+        .hw-sp{
+            font-size: 9pt;
+            color: #9b9b9b;
+            position: relative;
+            top: -2px;
         }
     }
 }

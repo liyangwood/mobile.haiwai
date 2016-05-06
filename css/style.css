@@ -235,7 +235,8 @@ p {
     color: #9b9b9b;
     padding: 12px 15px; }
   .hw-article-list .item {
-    min-height: 72px;
+    min-height: 76px;
+    height: 76px;
     padding-bottom: 12px; }
     .hw-article-list .item .hw-img {
       width: 76px;
@@ -251,7 +252,19 @@ p {
       margin-top: 5px;
       color: #4a4a4a;
       font-weight: normal;
-      white-space: normal; }
+      white-space: normal;
+      display: flex;
+      align-items: center; }
+    .hw-article-list .item .c-small {
+      font-size: 16px;
+      margin-top: 2px;
+      height: 38px;
+      line-height: 18px; }
+    .hw-article-list .item .hw-sp {
+      font-size: 9pt;
+      color: #9b9b9b;
+      position: relative;
+      top: -2px; }
 
 .hw-coupon-list {
   background: #ffffff; }
@@ -594,6 +607,76 @@ p {
   .hw-hwArticleViewComp .hw-article img {
     margin-top: 15px;
     max-width: 100%; }
+
+.hw-news-header {
+  background: #37bccd;
+  position: relative; }
+  .hw-news-header .icon {
+    color: #fff; }
+  .hw-news-header .hw-text {
+    font-size: 14px;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 15px; }
+
+.hw-news-header .hw-one {
+  height: 30px;
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+  font-size: 17px;
+  color: #fff;
+  line-height: 30px;
+  margin-right: 5px;
+  margin-top: 5px; }
+
+.hw-news-header .hw-one:first-child {
+  margin-left: 5px; }
+
+.hw-news-header .hw-one.hw-action {
+  font-weight: 700;
+  font-size: 18px; }
+
+.hw-news-header .hw-down {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  height: 40px;
+  width: 30px;
+  text-align: center;
+  background: #37bccd;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  justify-content: center; }
+
+.hw-news-header .hw-down .icon:before {
+  font-size: 24px; }
+
+.hw-news-header-modal {
+  background: rgba(255, 255, 255, 0.5); }
+  .hw-news-header-modal .hw-box {
+    background: #37bccd;
+    padding: 10px 15px 20px; }
+    .hw-news-header-modal .hw-box .hw-col {
+      display: inline-block;
+      width: 25%;
+      text-align: center;
+      margin-top: 10px; }
+      .hw-news-header-modal .hw-box .hw-col b {
+        color: #111;
+        background: #fff;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 400;
+        height: 30px;
+        line-height: 30px;
+        width: 80%;
+        display: block;
+        margin: 0 auto; }
 
 .hw-hwCouponViewComp .ca {
   background: #ffffff; }

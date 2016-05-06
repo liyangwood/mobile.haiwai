@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('../inc/meta.html')
+</head>
+<body ng-app="HaiWaiApp" ng-controller="ArticleListCtrl">
+
+<ion-header-bar class="hw-base-header">
+	<div class="buttons">
+		<button class="button-clear hw-back" ng-click="fn.goBack()">
+			<i class="icon ion-ios-arrow-left"></i>
+		</button>
+	</div>
+	<h1 class="title">生活指南</h1>
+</ion-header-bar>
+
+<kg-news-header
+	style="margin-top:44px;"
+	hw-current-index="catIndex"
+	hw-current-data="catList"></kg-news-header>
+
+<ion-content class="hw-content" style="top:88px;">
+
+	<div class="list hw-article-list" style="margin-top:0;">
+
+		<a ng-repeat="item in list track by item.id" class="item item-thumbnail-left"
+		   href="{{::fn.path.article(item.id)}}">
+			<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(item)}}"></hw-loading-image>
+			<h2 ng-class="{'c-small':item.bizinfo}">{{::item.title}}</h2>
+			<span class="hw-sp" ng-if="item.bizinfo">作者 : {{::item.bizinfo.name_cn}}</span>
+		</a>
+	</div>
+
+	<ion-infinite-scroll
+		on-infinite="loadMoreData()"
+		spinner="ios"
+		distance="5px">
+	</ion-infinite-scroll>
+
+</ion-content>
+
+</body>
+</html>

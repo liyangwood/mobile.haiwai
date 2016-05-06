@@ -158,3 +158,98 @@ KG.App.directive('kgBaseInput', [
 		};
 	}
 ]);
+
+KG.App.directive('kgNewsHeader', function($ionicModal){
+	return {
+		restrict : 'E',
+		replace : true,
+		templateUrl : util.getTplPath('comp/ArticleListHeader'),
+
+		scope : {
+			hwCurrentData : '=',
+			hwCurrentIndex : '='
+		},
+
+		link : function($scope, $elem, $attr){
+
+
+			var modal = null;
+			var unwa = $scope.$watch('hwCurrentData', function(newData){
+				if(newData){
+					//console.log($scope.hwCurrentIndex)
+					$elem.find('ion-scroll').children().eq(0).css('width', $scope.hwCurrentData.length * 80 + 5 +'px');
+					initModal();
+					unwa();
+				}
+
+			});
+
+			$scope.slideToIndexPage = function(index){
+				$scope.currentIndex = index;
+
+			};
+
+			$elem.on('click', function(e){
+				var o = util.jq(e.target);
+				if(o.hasClass('hw-one')){
+					if($scope.currentIndex == o.attr('title')) return;
+
+					var index = o.attr('title');
+					$scope.slideToIndexPage(index);
+					$scope.$digest();
+				}
+
+				var st = ionic.DomUtil.getParentOrSelfWithClass(o[0], 'hw-down');
+				if(st){
+
+					$scope.showAll = !$scope.showAll;
+					if($scope.showAll){
+
+						modal.show();
+					}
+				}
+			});
+
+
+			function initModal(){
+
+				var top = 44;
+
+				if(util.inDevice()){
+					top += util.getStatusBarHeight();
+				}
+
+				var tpl = '<ion-modal-view style="top:'+top+'px" ng-click="hideModal()" class="hw-news-header-modal"><div class="hw-box">';
+
+				util.each($scope.data, function(item, index){
+					tpl += '<div class="hw-col"><b ng-click="slideToIndexPageForModal('+index+')">'+item.name+'</b></div>';
+				});
+
+				tpl += '</div></ion-modal-view>';
+				$scope.slideToIndexPageForModal = function(index){
+					$scope.slideToIndexPage(index);
+
+					//TODO 以后需要控制ion-scroll到对应的栏目处
+				};
+				modal = $ionicModal.fromTemplate(tpl, {
+					scope: $scope,
+					animation: 'slide-in-up'
+				});
+				$scope.$on('$destroy', function() {
+					modal.remove();
+				});
+				$scope.$on('modal.hidden', function(){
+					$scope.showAll = false;
+				});
+				$scope.hideModal = function(){
+					modal.hide();
+				};
+			}
+
+
+
+			$scope.showAll = false;
+
+		}
+	};
+});

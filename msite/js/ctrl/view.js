@@ -70,3 +70,70 @@ KG.App.controller('CouponViewCtrl', [
 		});
 	}
 ]);
+
+KG.App.controller('ArticleListCtrl', [
+	'$scope',
+	function($scope){
+		$scope.hasMore = false;
+
+		var id = util.url.param('id') || 'hot';
+
+		KG.helper.loading.show();
+		KG.request.getSiteArticleList({
+			category : id
+		}, function(flag, rs){
+			KG.helper.loading.hide();
+			if(flag){
+				rs.category = [{
+					category_id : 'hot',
+					name : '热门文章'
+				}].concat(rs.category).concat([{
+						category_id : '30',
+						name : '商家专栏'
+					}]);
+
+				$scope.catList = rs.category;
+				$scope.list = rs.list;
+
+				$scope.catIndex = _.findIndex(rs.category, {category_id : id});
+
+				if(rs.list.length > 14){
+					$scope.hasMore = true;
+				}
+			}
+		});
+
+		$scope.loadMoreData = function(){
+			if(!$scope.hasMore){
+				$scope.$broadcast('scroll.infiniteScrollComplete');
+				return false;
+			}
+			var lastid = _.last($scope.list)?_.last($scope.list).id:null;
+			if(!lastid){
+				$scope.$broadcast('scroll.infiniteScrollComplete');
+				return false;
+			}
+			else{
+				KG.request.getSiteArticleList({
+					category : id,
+					lastid : lastid
+				}, function(flag, rs){
+					if(rs.list && rs.list.length > 0){
+						$scope.list = $scope.list.concat(rs.list);
+					}
+					else{
+						$scope.hasMore = false;
+						KG.helper.toast('没有更多文章了');
+						$scope.loadMoreData = function(){
+
+							$scope.$broadcast('scroll.infiniteScrollComplete');
+						};
+					}
+
+					$scope.$broadcast('scroll.infiniteScrollComplete');
+				});
+			}
+		};
+
+	}
+]);

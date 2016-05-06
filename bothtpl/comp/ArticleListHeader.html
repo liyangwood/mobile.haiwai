@@ -1,0 +1,15 @@
+<div class="bar bar-header hw-news-header">
+	<div class="hw-text" ng-show="showAll">
+		切换栏目
+	</div>
+	<ion-scroll ng-show="!showAll" direction="x" scrollbar-x="false" style="margin-right: 10px;">
+		<a class="hw-one"
+		   href="article.list.html?id={{::item.category_id}}"
+		   ng-class="{'hw-action':hwCurrentIndex==index}"
+		   ng-repeat="(index, item) in hwCurrentData">{{::item.name}}</a>
+	</ion-scroll>
+	<!--<div class="hw-down">-->
+		<!--<i ng-show="!showAll" class="icon ion-ios-arrow-down"></i>-->
+		<!--<i ng-show="showAll" class="icon ion-ios-arrow-up"></i>-->
+	<!--</div>-->
+</div>
