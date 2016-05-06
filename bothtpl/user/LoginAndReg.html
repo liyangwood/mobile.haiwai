@@ -1,0 +1,32 @@
+
+<div class="hw-hwUserLoginComp">
+	<div class="tabs-striped tabs-top tabs-color-light">
+		<div class="tabs">
+			<a class="tab-item" ng-class="{'active':isLoginBox}" ng-click="showLoginBox()" href="javascript:void(0)">
+				登录
+			</a>
+			<a class="tab-item" ng-class="{'active':!isLoginBox}" ng-click="showRegBox()" href="javascript:void(0)">
+				注册
+			</a>
+
+		</div>
+	</div>
+
+	<div ng-show="isLoginBox" class="c-box">
+		<kg-base-input
+			data-gap="25"
+			placeholder="邮箱"></kg-base-input>
+
+		<kg-base-input
+			data-gap="25"
+			data-type="password"
+			data-top="25"
+			placeholder="密码"></kg-base-input>
+
+		<a href="javascript:void(0)" class="hw-btn hw-yellow-button">登录</a>
+	</div>
+
+	<div ng-show="!isLoginBox" class="c-box">
+		222
+	</div>
+</div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('../inc/meta.html')
+</head>
+<body ng-app="HaiWaiApp" ng-controller="UserLoginCtrl">
+<!--<ion-nav-bar animation="nav-title-slide-ios7"-->
+             <!--type="bar-positive"-->
+             <!--class="hw-base-header">-->
+	<!--<ion-nav-back-button class="button-clear hw-back kg_show">-->
+		<!--<i class="icon ion-ios-arrow-left"></i>-->
+	<!--</ion-nav-back-button>-->
+<!--</ion-nav-bar>-->
+<ion-header-bar class="hw-base-header">
+	<div class="buttons">
+		<button class="button-clear hw-back" ng-click="fn.goBack()">
+			<i class="icon ion-ios-arrow-left"></i>
+		</button>
+	</div>
+	<h1 class="title">登录注册</h1>
+</ion-header-bar>
+
+<ion-content class="hw-content kg_noTop">
+	<hw-user-login-comp></hw-user-login-comp>
+</ion-content>
+
+
+</body>
+</html>

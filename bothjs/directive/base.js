@@ -122,3 +122,32 @@ KG.App.directive('hwStarNum', [
 		};
 	}
 ]);
+
+KG.App.directive('kgBaseInput', [
+	function(){
+		return {
+			restrict : 'E',
+			replace : true,
+			template : function(elem, attr){
+				var sy = '';
+				if(attr.gap){
+					sy += 'margin-left:'+attr.gap+'px;';
+					sy += 'margin-right:'+attr.gap+'px;';
+				}
+				if(attr.top){
+					sy += 'margin-top:'+attr.top+'px;';
+				}
+
+				sy = 'style="'+sy+'"';
+				var h = [
+					'<label '+sy+' class="hw-kgBaseInput">',
+						'<input type="',(attr.type?attr.type:"text"),'" placeholder="'+attr.placeholder+'" />',
+					'<label>'
+				].join('');
+
+
+				return h;
+			}
+		};
+	}
+]);

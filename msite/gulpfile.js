@@ -23,6 +23,7 @@ var JS = {
 		"../bothjs/factory/ImagePreviewFactory.js",
 
 		"../bothjs/directive/base.js",
+		"../bothjs/directive/user.js",
 		"../bothjs/directive/view.js",
 
 		"../bothjs/ctrl/root.js",
