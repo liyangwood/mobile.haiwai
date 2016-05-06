@@ -15,18 +15,34 @@
 	<div ng-show="isLoginBox" class="c-box">
 		<kg-base-input
 			data-gap="25"
+			value="login_email"
 			placeholder="邮箱"></kg-base-input>
 
 		<kg-base-input
 			data-gap="25"
 			data-type="password"
 			data-top="25"
+			value="login_password"
 			placeholder="密码"></kg-base-input>
 
-		<a href="javascript:void(0)" class="hw-btn hw-yellow-button">登录</a>
+		<a ng-click="clickLoginBtn()" href="javascript:void(0)" class="hw-btn hw-yellow-button">登录</a>
 	</div>
 
 	<div ng-show="!isLoginBox" class="c-box">
-		222
+		<kg-base-input
+			data-gap="25"
+			value="reg_email"
+			error="reg_email_error"
+			placeholder="您的邮箱"></kg-base-input>
+
+		<kg-base-input
+			data-gap="25"
+			data-type="password"
+			data-top="25"
+			value="reg_password"
+			error="reg_password_error"
+			placeholder="设置密码（至少6个字符）"></kg-base-input>
+
+		<a ng-click="clickRegBtn()" href="javascript:void(0)" class="hw-btn hw-yellow-button">注册</a>
 	</div>
 </div>

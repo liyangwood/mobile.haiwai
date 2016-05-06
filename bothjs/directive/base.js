@@ -128,6 +128,10 @@ KG.App.directive('kgBaseInput', [
 		return {
 			restrict : 'E',
 			replace : true,
+			scope : {
+				value : '=',
+				error : '='
+			},
 			template : function(elem, attr){
 				var sy = '';
 				if(attr.gap){
@@ -141,12 +145,15 @@ KG.App.directive('kgBaseInput', [
 				sy = 'style="'+sy+'"';
 				var h = [
 					'<label '+sy+' class="hw-kgBaseInput">',
-						'<input type="',(attr.type?attr.type:"text"),'" placeholder="'+attr.placeholder+'" />',
+						'<span class="error">{{error}}</span>',
+						'<input ng-model="value" type="',(attr.type?attr.type:"text"),'" placeholder="'+attr.placeholder+'" />',
 					'<label>'
 				].join('');
 
 
 				return h;
+			},
+			link : function(scope, elem, attr){
 			}
 		};
 	}

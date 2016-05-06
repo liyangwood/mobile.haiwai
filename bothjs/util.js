@@ -297,6 +297,13 @@
 		AmericanPhone : function(phone){
 			var reg = /^[0-9]{10}$/;
 			return reg.test(phone);
+		},
+		password : function(pwd){
+			if(!pwd || pwd.length < 6){
+				return false;
+			}
+
+			return true;
 		}
 	};
 
