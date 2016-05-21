@@ -25,6 +25,7 @@ KG.App.directive('hwUserLoginComp', [
 							username : email,
 							password : pwd
 						}, function(user){
+							KG.helper.toast('登录成功');
 							console.log(user);
 						});
 					},
@@ -46,6 +47,20 @@ KG.App.directive('hwUserLoginComp', [
 						else{
 							$scope.reg_password_error = '';
 						}
+
+						KG.user.register({
+							email : email,
+							password : pwd,
+							confirm_password : pwd
+						}, function(flag, rs){
+							if(flag){
+								KG.helper.toast('注册成功');
+
+								$scope.isLoginBox = true;
+								$scope.login_email = email;
+								$scope.login_password = pwd;
+							}
+						});
 					}
 				});
 			}

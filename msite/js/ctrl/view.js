@@ -8,9 +8,14 @@ KG.App.controller('StoreViewCtrl', [
 		KG.helper.loading.show();
 		KG.request.getStoreDetail({
 			id : storeID
-		}, function(flag, rs){
+		}, function(flag, rs, json){
 			KG.helper.loading.hide();
 			console.log(rs);
+
+			if(json.statue === 404){
+
+			}
+
 			if(flag){
 				util.storage.set('hw-store-baseinfo', rs);
 				$scope.store = rs;

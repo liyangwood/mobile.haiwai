@@ -35,7 +35,7 @@ KG.request = {
 			dataType : dataType,
 			success : function(json){
 				if(success){
-					success.call(null, json.status>0, json.return);
+					success.call(null, json.status>0, json.return, json);
 				}
 
 				dtd.resolve(json.return);
