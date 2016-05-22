@@ -8,6 +8,8 @@ KG.App.controller('MineStoreListCtrl', [
 			KG.helper.loading.hide();
 			if(flag){
 				console.log(rs);
+
+				$scope.list = rs;
 			}
 		});
 	}

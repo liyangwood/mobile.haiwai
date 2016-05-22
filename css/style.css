@@ -75,6 +75,14 @@ p {
     .hw-list .hw-s1 span {
       font-size: 14px;
       color: #4a4a4a; }
+  .hw-list .hw-item p {
+    margin: 0; }
+  .hw-list .hw-item .h4 {
+    font-size: 17px;
+    color: #4a4a4a; }
+  .hw-list .hw-item .hw-sp {
+    font-size: 9pt;
+    color: #777777; }
 
 .hw-header {
   background: #37bccd; }
@@ -295,6 +303,17 @@ p {
       color: #777;
       display: inline-block;
       margin-top: 4px; }
+
+.hw-center-text {
+  font-size: 15px;
+  color: #00a7bc;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 0; }
 
 .hw-star-num .icon {
   color: #f4a62a;
@@ -728,5 +747,24 @@ p {
     position: absolute;
     right: 15px;
     top: 0; }
+
+.hw-mine-storelist {
+  background: transparent; }
+  .hw-mine-storelist .hw-item {
+    height: 86px;
+    min-height: inherit;
+    margin-bottom: 10px;
+    background: #ffffff;
+    padding: 12px 15px;
+    padding-left: 75px; }
+    .hw-mine-storelist .hw-item .hw-img {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 12px;
+      left: 15px;
+      overflow: hidden; }
+    .hw-mine-storelist .hw-item .h4 {
+      font-size: 17px; }
 
 /*# sourceMappingURL=style.css.map */

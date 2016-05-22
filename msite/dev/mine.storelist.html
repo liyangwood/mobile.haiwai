@@ -12,9 +12,31 @@
 		</button>
 	</div>
 	<h1 class="title">我的店铺</h1>
+
+	<div class="buttons">
+		<button class="button-clear">
+			<i style="color: #ffffff;font-size: 24px;" class="icon ion-ios-plus-outline"></i>
+		</button>
+	</div>
 </ion-header-bar>
 
-<ion-content class="hw-content kg_noTop">
+<ion-content class="hw-content">
+
+	<div style="margin-top: 15px;" class="hw-center-text">请选择您要查看的店铺</div>
+
+	<div class="list hw-list hw-mine-storelist">
+		<a ng-repeat="item in list track by item.entityID" class="item item-thumbnail-left hw-item"
+		   href="{{::fn.path.store(item.entityID)}}">
+			<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(item)}}"></hw-loading-image>
+			<p class="h4">{{::item.name_cn}}</p>
+			<p style="height: 24px;">
+				<hw-star-num star-num="{{::item.star}}"></hw-star-num>
+				<span>{{::item.commentnum}} 条评论</span>
+			</p>
+			<p class="hw-sp">{{::item.city}} {{::item.state}}</p>
+
+		</a>
+	</div>
 
 </ion-content>
 
