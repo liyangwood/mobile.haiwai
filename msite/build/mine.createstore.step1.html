@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title></title>
+
+<link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+<link href="../lib/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- build:css -->
+<link href="../css/style.css" rel="stylesheet">
+<!-- endbuild -->
+
+
+<script src="../lib/ionic/js/ionic.bundle.min.js"></script>
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/md5.min.js"></script>
+<script src="../lib/moment.min.js"></script>
+<script src="../lib/ng-cordova.min.js"></script>
+
+
+<!-- build:js_core -->
+<script src="../bothjs/core.js"></script>
+<script src="../bothjs/request.js"></script>
+<script src="../bothjs/util.js"></script>
+<script src="../bothjs/helper.js"></script>
+<script src="../bothjs/user.js"></script>
+
+<script src="../bothjs/factory/ImagePreviewFactory.js"></script>
+
+<script src="../bothjs/directive/base.js"></script>
+<script src="../bothjs/directive/view.js"></script>
+<script src="../bothjs/directive/user.js"></script>
+<script src="../bothjs/directive/createstore.js"></script>
+
+<script src="../bothjs/ctrl/root.js"></script>
+
+<script src="../js/ctrl/home.js"></script>
+<script src="../js/ctrl/view.js"></script>
+<script src="../js/ctrl/user.js"></script>
+<script src="../js/ctrl/mine.js"></script>
+
+<!-- endbuild -->
+</head>
+<body ng-app="HaiWaiApp" ng-controller="MineCreateStoreStep1">
+
+<ion-header-bar class="hw-base-header">
+	<div class="buttons">
+		<button class="button-clear hw-back" ng-click="fn.goBack()">
+			<i class="icon ion-ios-arrow-left"></i>
+		</button>
+	</div>
+	<h1 class="title">创建店铺</h1>
+
+
+</ion-header-bar>
+
+
+
+
+<ion-content class="hw-content">
+	<div class="hw-cs-step"><p></p></div>
+
+	<hw-create-store-step1>
+	</hw-create-store-step1>
+
+</ion-content>
+
+
+</body>
+</html>
