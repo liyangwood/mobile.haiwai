@@ -145,8 +145,10 @@ KG.App.directive('kgBaseInput', [
 				sy = 'style="'+sy+'"';
 				var h = [
 					'<label '+sy+' class="hw-kgBaseInput">',
+						'<span class="lb ',(attr.require?'require':''),'">',(attr.label||''),'</span>',
+
 						'<span class="error">{{error}}</span>',
-						'<input ng-model="value" type="',(attr.type?attr.type:"text"),'" placeholder="'+attr.placeholder+'" />',
+						'<input ng-model="value" type="',(attr.type?attr.type:"text"),'" placeholder="'+(attr.placeholder||'')+'" />',
 					'<label>'
 				].join('');
 
@@ -154,6 +156,58 @@ KG.App.directive('kgBaseInput', [
 				return h;
 			},
 			link : function(scope, elem, attr){
+			}
+		};
+	}
+]);
+
+KG.App.directive('kgBaseSelect', [
+	function(){
+		return {
+			restrict : 'E',
+			replace : true,
+			scope : {
+				value : '=',
+				error : '=',
+				list : '='
+			},
+			template : function(elem, attr){
+				var sy = '';
+				if(attr.gap){
+					sy += 'margin-left:'+attr.gap+'px;';
+					sy += 'margin-right:'+attr.gap+'px;';
+				}
+				if(attr.top){
+					sy += 'margin-top:'+attr.top+'px;';
+				}
+
+				sy = 'style="'+sy+'"';
+				var h = [
+					'<label '+sy+' class="hw-kgBaseInput">',
+					'<span class="lb ',(attr.require?'require':''),'">',(attr.label||''),'</span>',
+
+					'<span class="error">{{error}}</span>',
+					//'<input ng-model="value" type="',(attr.type?attr.type:"text"),'" placeholder="'+(attr.placeholder||'')+'" />',
+
+					'<select ng-change="change(value)" ng-model="value">',
+						'<option ng-selected="value===item.value" ng-repeat="item in list" value="{{::item.value}}">{{::item.name}}</option>',
+					'</select>',
+
+					'<label>'
+				].join('');
+
+
+				return h;
+			},
+			controller : function($scope, $element, $attrs){
+
+				var un = $scope.$watch('list', function(val){
+					if(val){
+						$scope.list = val;
+						un();
+					}
+				});
+
 			}
 		};
 	}

@@ -14,3 +14,17 @@ KG.App.controller('MineStoreListCtrl', [
 		});
 	}
 ]);
+
+KG.App.controller('MineCreateStoreStep1', [
+	'$scope',
+	function($scope){
+
+	}
+]);
+
+KG.App.controller('MineCreateStoreStep2', [
+	'$scope',
+	function($scope){
+
+	}
+]);

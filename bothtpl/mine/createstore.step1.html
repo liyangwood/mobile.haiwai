@@ -1,0 +1,40 @@
+
+<section class="hw-createstore-step1">
+
+	<kg-base-input
+		data-gap="15"
+		value="name.value"
+		error="name.error"
+		data-label="店铺名称"
+		data-require="true">
+	</kg-base-input>
+
+	<kg-base-input
+		data-gap="15"
+		value="tel.value"
+		error="tel.error"
+		data-label="营业电话"
+		data-require="true">
+	</kg-base-input>
+
+	<kg-base-select
+		data-gap="15"
+		value="cat.value"
+		error="cat.error"
+		data-label="服务类别"
+		list="cat.list"
+		data-require="true">
+	</kg-base-select>
+
+	<div style="margin:20px 15px 0;" class="hw-kgBaseInput">
+		<span class="lb">营业特色</span>
+		<div class="clear"></div>
+		<dd class="hw-catbox">
+			<b class="hw-one" ng-class="{'active':item.active}" ng-click="toggleCategoryDetail($index)"
+			   ng-repeat="item in cat.detail">{{::item.name}}</b>
+		</dd>
+	</div>
+
+	<a style="margin-top: 50px;" class="hw-btn hw-blue-button" ng-click="submit()">下一步</a>
+
+</section>

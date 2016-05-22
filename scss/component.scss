@@ -79,13 +79,39 @@
         color: $color-4a;
         padding: 0 10px;
         border: 1px solid #c5c5c5;
+    }
 
+    select{
+        width: 100%;
+        display: inline-block;
+        height: 46px;
+        font-size: 15px;
+        color: $color-4a;
+        padding: 0 10px;
+        border: 1px solid #c5c5c5;
+        background: #ffffff;
     }
 
     .error{
         float: right;
         color: #f20d0d;
         font-size: 9pt;
+    }
+
+    .lb{
+        font-size: 14px;
+        color: #acacac;
+        float: left;
+
+    }
+
+    .lb.require:after{
+        content:'*';
+        color: #f00;
+        font-size: 18px;
+        float: right;
+        position: relative;
+        left: 5px;
     }
 }
 
