@@ -429,6 +429,13 @@ p {
     margin-right: 25px;
     margin-top: 25px; }
 
+.hw-line {
+  height: 1px;
+  width: 100%;
+  display: block;
+  background: #ebebeb;
+  margin: 20px 0; }
+
 .cp-site-header {
   background: #37bccd; }
   .cp-site-header input::-webkit-input-placeholder {
@@ -821,5 +828,8 @@ p {
       background: #f4a62a;
       color: #ffffff;
       border-color: #f4a62a; }
+
+.hw-createstore-step2 .hw-kgBaseInput {
+  margin-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */

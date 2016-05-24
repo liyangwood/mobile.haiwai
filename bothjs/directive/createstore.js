@@ -70,3 +70,22 @@ KG.App.directive('hwCreateStoreStep1', [
 		};
 	}
 ]);
+
+KG.App.directive('hwCreateStoreStep2', [
+	function(){
+		var F = {
+			init : function($scope){
+				$scope.city = $scope.address = $scope.zip = $scope.state = {};
+			}
+		};
+
+		return {
+			restrict : 'E',
+			replace : true,
+			templateUrl : util.getTplPath('mine/createstore.step2'),
+			controller : function($scope, $element, $attrs){
+				F.init($scope);
+			}
+		};
+	}
+]);
