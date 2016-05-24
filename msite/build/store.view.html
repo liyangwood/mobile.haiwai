@@ -73,6 +73,16 @@
 					url : '/moreinfo',
 					templateUrl : util.getTplPath('msite/store.view.more'),
 					controller : 'StoreViewMoreInfoCtrl'
+				}).state('404', {
+					url : '/404',
+					template : [
+						'<ion-view hide-nav-bar="true">',
+							'<ion-content class="hw-content no_header">',
+								'<h4 style="margin:100px auto 0;text-align: center;color: #777777;">该店铺已经被删除</h4>',
+							'</ion-content>',
+
+						'</ion-view>'
+					].join('')
 				});
 			}
 		});

@@ -25,11 +25,14 @@ var JS = {
 		"../bothjs/directive/base.js",
 		"../bothjs/directive/user.js",
 		"../bothjs/directive/view.js",
+		"../bothjs/directive/createstore.js",
 
 		"../bothjs/ctrl/root.js",
 
 		"js/ctrl/home.js",
-		"js/ctrl/view.js"
+		"js/ctrl/view.js",
+		"js/ctrl/user.js",
+		"js/ctrl/mine.js"
 	]),
 	core_min : 'core.min.js',
 	css_min : 'style.min.css'

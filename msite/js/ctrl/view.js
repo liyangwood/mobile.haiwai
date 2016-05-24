@@ -12,8 +12,9 @@ KG.App.controller('StoreViewCtrl', [
 			KG.helper.loading.hide();
 			console.log(rs);
 
-			if(json.statue === 404){
-
+			if(json.status === 404){
+				KG.helper.goPath('/404');
+				return;
 			}
 
 			if(flag){
