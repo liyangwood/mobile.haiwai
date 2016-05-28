@@ -49,12 +49,26 @@ KG.App.controller('MineCreateStoreStep1', [
 				return;
 			}
 		};
+
+		$scope.goToStep2 = function(){
+			KG.helper.goPath('/step2');
+		}
 	}
 ]);
 
 KG.App.controller('MineCreateStoreStep2', [
 	'$scope',
-	function($scope){
+	'$rootScope',
+	function($scope, $rootScope){
+		$rootScope.initPage = function(){
+			var user = KG.user.get();
+			if(!user.isLogin){
+				util.path.go('user.login.html');
+
+				return;
+			}
+		};
+
 
 	}
 ]);

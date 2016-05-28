@@ -11,6 +11,12 @@ KG.App.directive('hwCreateStoreStep1', [
 						console.log(rs);
 						$scope.$apply(function(){
 							$scope.cat.detail = rs;
+
+							if($scope.initDefaultValue){
+								$scope.initDefaultValue();
+
+								$scope.initDefaultValue = null;
+							}
 						});
 
 					}
@@ -26,7 +32,7 @@ KG.App.directive('hwCreateStoreStep1', [
 					tel : $scope.tel.value,
 					category : $scope.cat.value,
 					taglist : _.map(arr, function(item){
-						return item.name;
+						return item.pk_id;
 					})
 				};
 				console.log(data);
@@ -61,6 +67,22 @@ KG.App.directive('hwCreateStoreStep1', [
 				}
 
 				return f;
+			},
+
+			setDefaultValue : function($scope, data){
+				$scope.name.value = data.name;
+				$scope.tel.value = data.tel;
+				$scope.cat.value = data.category;
+
+				$scope.initDefaultValue = function(){
+					$scope.cat.detail = _.map($scope.cat.detail, function(one){
+						if(_.contains(data.taglist, one.pk_id)){
+							one.active = true;
+						}
+
+						return one;
+					});
+				};
 			}
 		};
 
@@ -68,6 +90,9 @@ KG.App.directive('hwCreateStoreStep1', [
 			restrict : 'E',
 			replace : true,
 			templateUrl : util.getTplPath('mine/createstore.step1'),
+			scope : {
+				submitCallback : '&'
+			},
 			controller : function($scope, $element, $attrs){
 				$scope.cat = {};
 				$scope.name = {};
@@ -83,7 +108,10 @@ KG.App.directive('hwCreateStoreStep1', [
 									value : item.pk_id
 								};
 							});
+
+
 							$scope.cat.value = rs[0].pk_id;
+
 						});
 
 					}
@@ -106,7 +134,15 @@ KG.App.directive('hwCreateStoreStep1', [
 						var data = F.getFormData($scope);
 						if(!F.validate($scope, data)){
 							KG.helper.goTop();
+
+							return false;
 						}
+
+						//store in localstorage
+						//util.storage.set('createstore-step1', data);
+
+
+						$scope.submitCallback();
 					}
 				});
 			}
@@ -118,7 +154,10 @@ KG.App.directive('hwCreateStoreStep2', [
 	function(){
 		var F = {
 			init : function($scope){
-				$scope.city = $scope.address = $scope.zip = $scope.state = {};
+				$scope.city = {};
+				$scope.address = {};
+				$scope.zip = {};
+				$scope.state = {};
 			}
 		};
 

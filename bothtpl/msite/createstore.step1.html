@@ -1,0 +1,16 @@
+<ion-view hide-nav-bar="false" view-title="创建店铺">
+
+	<ion-nav-buttons side="primary">
+		<button class="button-clear hw-back" ng-click="fn.goBack()">
+			<i class="icon ion-ios-arrow-left"></i>
+		</button>
+	</ion-nav-buttons>
+
+	<ion-content class="hw-content">
+		<div class="hw-cs-step"><p></p></div>
+
+		<hw-create-store-step1 submit-callback="goToStep2()">
+		</hw-create-store-step1>
+	</ion-content>
+
+</ion-view>

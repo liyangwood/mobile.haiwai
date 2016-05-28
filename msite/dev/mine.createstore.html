@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('../inc/meta.html')
+</head>
+<body ng-app="HaiWaiApp">
+
+<ion-nav-bar animation="nav-title-slide-ios7"
+             type="bar-positive"
+             class="hw-base-header">
+	<ion-nav-back-button class="button-clear hw-back">
+		<i class="icon ion-ios-arrow-left"></i>
+	</ion-nav-back-button>
+</ion-nav-bar>
+
+<ion-nav-view></ion-nav-view>
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+	KG.App.provider('appRouter', function($stateProvider){
+		_.extend(this, {
+			init : function(){
+				$stateProvider.state('index', {
+					url : '/',
+					templateUrl : util.getTplPath('msite/createstore.step1'),
+					controller : 'MineCreateStoreStep1'
+				}).state('step2', {
+					url : '/step2',
+					templateUrl : util.getTplPath('msite/createstore.step2'),
+					controller : 'MineCreateStoreStep2'
+				});
+			}
+		});
+		this.$get = function(){};
+
+	});
+
+	KG.App.config(function($stateProvider, $urlRouterProvider, appRouterProvider){
+		//配置路由
+		appRouterProvider.init();
+		$urlRouterProvider.otherwise('/');
+
+	});
+
+</script>
