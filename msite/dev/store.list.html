@@ -16,10 +16,11 @@
 		<select style="border:none;color: #ffffff;font-size: 17px;"
 		        ng-model="C.subtag"
 		        ng-change="changeSubtag(C.subtag)"
-		        class="hw-select">
+		        class="hw-select js_select">
 			<option ng-selected="C.subtag==opt.tag_id"
 			        ng-repeat="opt in subtaglist" value="{{::opt.tag_id}}">{{::opt.name}}</option>
 		</select>
+		<i ng-click="clickSelectIcon()" class="icon ion-ios-arrow-down"></i>
 	</div>
 
 

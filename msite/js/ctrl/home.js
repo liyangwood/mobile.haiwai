@@ -95,7 +95,8 @@ KG.App.controller('HomeSearchStoreCtrl', [
 
 KG.App.controller('HomeStoreListCtrl', [
 	'$scope',
-	function($scope){
+	'$element',
+	function($scope, $element){
 
 		$scope.emptyText = '';
 		var C =  $scope.C = {
@@ -195,6 +196,10 @@ KG.App.controller('HomeStoreListCtrl', [
 					$scope.more = 3;
 				}
 			});
+		};
+
+		$scope.clickSelectIcon = function(){
+
 		};
 
 		$scope.goToCoupon = function(e, id){

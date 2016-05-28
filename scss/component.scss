@@ -11,9 +11,11 @@
     height: 46px;
     font-size: 15px;
     color: $color-4a;
-    padding: 0 10px;
+    padding: 0 10px 0 10px;
     border: 1px solid #c5c5c5;
     background: transparent;
+    -webkit-appearance: none;
+
 }
 
 .hw-icon{

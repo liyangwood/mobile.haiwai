@@ -259,9 +259,10 @@ p {
   height: 46px;
   font-size: 15px;
   color: #4a4a4a;
-  padding: 0 10px;
+  padding: 0 10px 0 10px;
   border: 1px solid #c5c5c5;
-  background: transparent; }
+  background: transparent;
+  -webkit-appearance: none; }
 
 .hw-icon {
   display: inline-block;
