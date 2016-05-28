@@ -186,7 +186,8 @@ KG.App.directive('kgBaseInput', [
 			replace : true,
 			scope : {
 				value : '=',
-				error : '='
+				error : '=',
+				blueEvent : '='
 			},
 			template : function(elem, attr){
 				var sy = '';
@@ -204,7 +205,7 @@ KG.App.directive('kgBaseInput', [
 						'<span class="lb ',(attr.require?'require':''),'">',(attr.label||''),'</span>',
 
 						'<span class="error">{{error}}</span>',
-						'<input ng-model="value" type="',(attr.type?attr.type:"text"),'" placeholder="'+(attr.placeholder||'')+'" />',
+						'<input ng-blur="blurEvent()" ng-model="value" type="',(attr.type?attr.type:"text"),'" placeholder="'+(attr.placeholder||'')+'" />',
 					'<label>'
 				].join('');
 
@@ -212,6 +213,7 @@ KG.App.directive('kgBaseInput', [
 				return h;
 			},
 			link : function(scope, elem, attr){
+				//scope.blueEvent = _.noop()
 			}
 		};
 	}

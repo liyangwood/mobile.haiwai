@@ -8,7 +8,7 @@ KG.App.factory('$helper', function(
     $http,
     $ionicPopup,
 
-
+    $ionicScrollDelegate,
     $cordovaCamera,
     $cordovaToast,
     $cordovaGeolocation,
@@ -79,6 +79,10 @@ KG.App.factory('$helper', function(
 
         goPath : function(path){
             $location.path(path);
+        },
+
+        goTop : function(){
+            $ionicScrollDelegate.scrollTop(true)
         },
 
 

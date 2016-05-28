@@ -39,8 +39,16 @@ KG.App.controller('MineStoreListCtrl', [
 
 KG.App.controller('MineCreateStoreStep1', [
 	'$scope',
-	function($scope){
+	'$rootScope',
+	function($scope, $rootScope){
+		$rootScope.initPage = function(){
+			var user = KG.user.get();
+			if(!user.isLogin){
+				util.path.go('user.login.html');
 
+				return;
+			}
+		};
 	}
 ]);
 
