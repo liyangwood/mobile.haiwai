@@ -156,3 +156,168 @@
     background: #ebebeb;
     margin: 20px 0;
 }
+
+/* common box comp */
+.hw-article-list{
+    background: #ffffff;
+
+    .c-title{
+        font-size: 15px;
+        color: #9b9b9b;
+        padding: 12px 15px;
+    }
+    .item{
+        min-height: 76px;
+        height: 76px;
+        padding-bottom: 12px;
+
+        .hw-img{
+            width: 76px;
+            height: 56px;
+            position: absolute;
+            overflow: hidden;
+            left: 15px;
+            top: 8px;
+        }
+
+        h2{
+            font-size: 17px;
+            line-height: 24px;
+            height: 48px;
+            margin-top: 5px;
+            color: $color-4a;
+            font-weight: normal;
+            white-space: normal;
+            display: flex;
+            align-items: center;
+        }
+
+        .c-small{
+            font-size: 16px;
+            margin-top: 2px;
+            height: 38px;
+            line-height: 18px;
+
+        }
+        .hw-sp{
+            font-size: 9pt;
+            color: #9b9b9b;
+            position: relative;
+            top: -2px;
+        }
+    }
+}
+
+.hw-coupon-list{
+    background: #ffffff;
+    .c-title{
+        font-size: 15px;
+        color: #9b9b9b;
+        padding: 12px 15px;
+    }
+    .item{
+        min-height: 74px;
+        padding-bottom: 10px;
+
+        .hw-img{
+            width: 80px;
+            height: 56px;
+            position: absolute;
+            overflow: hidden;
+            left: 15px;
+            top: 8px;
+        }
+
+        h2{
+            font-size: 19px;
+            line-height: 24px;
+            height: 26px;
+            margin-top: 0;
+            font-weight: normal;
+            white-space: normal;
+            color: $yellow-color;
+        }
+
+        .c-sp{
+            font-size: 12px;
+            color: #777;
+            display: inline-block;
+            margin-top: 4px;
+        }
+    }
+}
+
+.hw-store-list{
+    background: transparent;
+
+    .hw-item{
+        min-height: 86px;
+        height: auto;
+        background: #ffffff;
+        padding: 12px 15px;
+        padding-left: 75px;
+        border-color: #ebebeb;
+        border-left: none;
+        border-right: none;
+        padding-right: 0;
+
+        .hw-img{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 12px;
+            left: 15px;
+            overflow: hidden;
+
+        }
+
+        .h4{
+            font-size: 17px;
+        }
+
+        .hw-coupon{
+            height: 24px;
+            border-top: 1px solid #ebebeb;
+            margin-top: 2px;
+            padding-top: 6px;
+
+            p{
+                color: $yellow-color;
+
+                .icon{
+                    background: url(http://www.haiwai.com/pc/image/store_coupon.png);
+                    width: 24px;
+                    height: 24px;
+                    background-size: 100%;
+                    margin-right: 8px;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+            }
+        }
+
+    }
+}
+
+.hw-loading-more{
+    width: 100%;
+    height: 40px;
+    background: #ffffff;
+    margin-top: 30px;
+    text-align: center;
+
+    label{
+        font-size: 15px;
+        cursor: pointer;
+        margin: 0 auto;
+        line-height: 40px;
+        font-weight: normal;
+        color: $blue-color;
+    }
+
+    .spinner-ios, .spinner-ios-small{
+        stroke: $blue-color;
+        position: relative;
+        top: 6px;
+    }
+}

@@ -6,6 +6,10 @@
         font-weight: 700;
     }
 
+    button>.icon{
+        color: #ffffff;
+    }
+
     .c1{
         background: transparent;
         color: #ffffff;
@@ -21,7 +25,9 @@
         border-radius: 16px;
         background: #00a7bc;
         border: none;
-        width: 100%;
+        width: 90%;
+        margin-left: 10px;
+        top: 2px;
 
         input{
             color: #ffffff;

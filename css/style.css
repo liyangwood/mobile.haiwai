@@ -238,75 +238,6 @@ p {
   .hw-bizinfo-style1 .item .icon {
     color: #fff; }
 
-/* common box comp */
-.hw-article-list {
-  background: #ffffff; }
-  .hw-article-list .c-title {
-    font-size: 15px;
-    color: #9b9b9b;
-    padding: 12px 15px; }
-  .hw-article-list .item {
-    min-height: 76px;
-    height: 76px;
-    padding-bottom: 12px; }
-    .hw-article-list .item .hw-img {
-      width: 76px;
-      height: 56px;
-      position: absolute;
-      overflow: hidden;
-      left: 15px;
-      top: 8px; }
-    .hw-article-list .item h2 {
-      font-size: 17px;
-      line-height: 24px;
-      height: 48px;
-      margin-top: 5px;
-      color: #4a4a4a;
-      font-weight: normal;
-      white-space: normal;
-      display: flex;
-      align-items: center; }
-    .hw-article-list .item .c-small {
-      font-size: 16px;
-      margin-top: 2px;
-      height: 38px;
-      line-height: 18px; }
-    .hw-article-list .item .hw-sp {
-      font-size: 9pt;
-      color: #9b9b9b;
-      position: relative;
-      top: -2px; }
-
-.hw-coupon-list {
-  background: #ffffff; }
-  .hw-coupon-list .c-title {
-    font-size: 15px;
-    color: #9b9b9b;
-    padding: 12px 15px; }
-  .hw-coupon-list .item {
-    min-height: 74px;
-    padding-bottom: 10px; }
-    .hw-coupon-list .item .hw-img {
-      width: 80px;
-      height: 56px;
-      position: absolute;
-      overflow: hidden;
-      left: 15px;
-      top: 8px; }
-    .hw-coupon-list .item h2 {
-      font-size: 19px;
-      line-height: 24px;
-      height: 26px;
-      margin-top: 0;
-      font-weight: normal;
-      white-space: normal;
-      color: #f4a62a; }
-    .hw-coupon-list .item .c-sp {
-      font-size: 12px;
-      color: #777;
-      display: inline-block;
-      margin-top: 4px; }
-
 .hw-center-text {
   font-size: 15px;
   color: #00a7bc;
@@ -436,11 +367,137 @@ p {
   background: #ebebeb;
   margin: 20px 0; }
 
+/* common box comp */
+.hw-article-list {
+  background: #ffffff; }
+  .hw-article-list .c-title {
+    font-size: 15px;
+    color: #9b9b9b;
+    padding: 12px 15px; }
+  .hw-article-list .item {
+    min-height: 76px;
+    height: 76px;
+    padding-bottom: 12px; }
+    .hw-article-list .item .hw-img {
+      width: 76px;
+      height: 56px;
+      position: absolute;
+      overflow: hidden;
+      left: 15px;
+      top: 8px; }
+    .hw-article-list .item h2 {
+      font-size: 17px;
+      line-height: 24px;
+      height: 48px;
+      margin-top: 5px;
+      color: #4a4a4a;
+      font-weight: normal;
+      white-space: normal;
+      display: flex;
+      align-items: center; }
+    .hw-article-list .item .c-small {
+      font-size: 16px;
+      margin-top: 2px;
+      height: 38px;
+      line-height: 18px; }
+    .hw-article-list .item .hw-sp {
+      font-size: 9pt;
+      color: #9b9b9b;
+      position: relative;
+      top: -2px; }
+
+.hw-coupon-list {
+  background: #ffffff; }
+  .hw-coupon-list .c-title {
+    font-size: 15px;
+    color: #9b9b9b;
+    padding: 12px 15px; }
+  .hw-coupon-list .item {
+    min-height: 74px;
+    padding-bottom: 10px; }
+    .hw-coupon-list .item .hw-img {
+      width: 80px;
+      height: 56px;
+      position: absolute;
+      overflow: hidden;
+      left: 15px;
+      top: 8px; }
+    .hw-coupon-list .item h2 {
+      font-size: 19px;
+      line-height: 24px;
+      height: 26px;
+      margin-top: 0;
+      font-weight: normal;
+      white-space: normal;
+      color: #f4a62a; }
+    .hw-coupon-list .item .c-sp {
+      font-size: 12px;
+      color: #777;
+      display: inline-block;
+      margin-top: 4px; }
+
+.hw-store-list {
+  background: transparent; }
+  .hw-store-list .hw-item {
+    min-height: 86px;
+    height: auto;
+    background: #ffffff;
+    padding: 12px 15px;
+    padding-left: 75px;
+    border-color: #ebebeb;
+    border-left: none;
+    border-right: none;
+    padding-right: 0; }
+    .hw-store-list .hw-item .hw-img {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 12px;
+      left: 15px;
+      overflow: hidden; }
+    .hw-store-list .hw-item .h4 {
+      font-size: 17px; }
+    .hw-store-list .hw-item .hw-coupon {
+      height: 24px;
+      border-top: 1px solid #ebebeb;
+      margin-top: 2px;
+      padding-top: 6px; }
+      .hw-store-list .hw-item .hw-coupon p {
+        color: #f4a62a; }
+        .hw-store-list .hw-item .hw-coupon p .icon {
+          background: url(http://www.haiwai.com/pc/image/store_coupon.png);
+          width: 24px;
+          height: 24px;
+          background-size: 100%;
+          margin-right: 8px;
+          vertical-align: middle;
+          display: inline-block; }
+
+.hw-loading-more {
+  width: 100%;
+  height: 40px;
+  background: #ffffff;
+  margin-top: 30px;
+  text-align: center; }
+  .hw-loading-more label {
+    font-size: 15px;
+    cursor: pointer;
+    margin: 0 auto;
+    line-height: 40px;
+    font-weight: normal;
+    color: #37bccd; }
+  .hw-loading-more .spinner-ios, .hw-loading-more .spinner-ios-small {
+    stroke: #37bccd;
+    position: relative;
+    top: 6px; }
+
 .cp-site-header {
   background: #37bccd; }
   .cp-site-header input::-webkit-input-placeholder {
     color: #dddddd;
     font-weight: 700; }
+  .cp-site-header button > .icon {
+    color: #ffffff; }
   .cp-site-header .c1 {
     background: transparent;
     color: #ffffff;
@@ -454,7 +511,9 @@ p {
     border-radius: 16px;
     background: #00a7bc;
     border: none;
-    width: 100%; }
+    width: 90%;
+    margin-left: 10px;
+    top: 2px; }
     .cp-site-header .c-lb input {
       color: #ffffff;
       font-size: 14px; }

@@ -19,6 +19,34 @@ KG.App.directive('hwSiteHomeHeader', [
 	}
 ]);
 
+KG.App.directive('hwSiteHomeSearchHeader', [
+
+	function(){
+		return {
+			restrict : 'E',
+			replace : true,
+			templateUrl : util.getTplPath('home/HomeSearchHeader'),
+
+			controller : function($scope, $element){
+				var searchInput = $($element).find('input');
+
+				searchInput.keyup(function(e){
+					if(e.keyCode !== 13){
+						return false;
+					}
+					var val = searchInput.val();
+					if(!val){
+						return false;
+					}
+
+					util.path.go('search.html?keyword='+val);
+				});
+			}
+
+		};
+	}
+]);
+
 KG.App.directive('hwSiteHomeTopNav', [
 	function(){
 		return {
@@ -35,6 +63,34 @@ KG.App.directive('hwSiteFooter', [
 			restrict : 'E',
 			replace : true,
 			templateUrl : util.getTplPath('home/Footer')
+		};
+	}
+]);
+
+KG.App.directive('hwLoadingMore', [
+	function(){
+		return {
+			restrict : 'E',
+			replace : true,
+			template : function(){
+				return [
+					'<div ng-show="state!==3" class="hw-loading-more">',
+						'<ion-spinner ng-show="state===2" class="js_loading"></ion-spinner>',
+						'<label ng-click="loadMore()" ng-show="state===1">点击加载更多</label>',
+					'</div>'
+				].join('');
+			},
+			scope : {
+				state : '=',
+				clickCallback : '&'
+			},
+			controller : function($scope, $element){
+
+				$scope.loadMore = function(){
+					//$scope.state = 2;
+					$scope.clickCallback();
+				}
+			}
 		};
 	}
 ]);
