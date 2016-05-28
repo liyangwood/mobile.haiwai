@@ -254,6 +254,15 @@ p {
   font-size: 20px;
   margin-right: 3px; }
 
+.hw-select {
+  display: inline-block;
+  height: 46px;
+  font-size: 15px;
+  color: #4a4a4a;
+  padding: 0 10px;
+  border: 1px solid #c5c5c5;
+  background: transparent; }
+
 .hw-icon {
   display: inline-block;
   background-size: 100%;

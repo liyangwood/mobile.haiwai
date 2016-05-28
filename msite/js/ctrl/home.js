@@ -92,3 +92,117 @@ KG.App.controller('HomeSearchStoreCtrl', [
 		F.init();
 	}
 ]);
+
+KG.App.controller('HomeStoreListCtrl', [
+	'$scope',
+	function($scope){
+
+		$scope.emptyText = '';
+		var C =  $scope.C = {
+			page : 1,
+
+			tag : util.url.param('tag'),
+			subtag : util.url.param('subtag') || '-1'
+		};
+		$scope.more = null;
+		var F = {
+			getListData : function(callback){
+				KG.request.getStoreListByTag({
+					tag : C.tag,
+					subtag : C.subtag>0 ? C.subtag : null,
+					publisher_type : 0,
+
+					page : C.page
+				}, function(flag, rs){
+					if(flag){
+						C.page++;
+					}
+
+					callback(flag, rs);
+				});
+			},
+
+			init : function(){
+				KG.helper.loading.show();
+				F.getListData(function(flag, rs){
+					KG.helper.loading.hide();
+					console.log(rs);
+					if(flag){
+						$scope.list = rs.list;
+						F.setSubtagList(rs);
+
+						$scope.more = F.checkMoreState(rs.list);
+					}
+					else{
+						$scope.list = [];
+
+						$scope.emptyText = '暂无本类商家';
+						$scope.more = 3;
+					}
+				});
+			},
+
+			checkMoreState : function(list){
+				if(list.length < 20){
+					return 3;
+				}
+				else{
+					return 1;
+				}
+			},
+
+			setSubtagList : function(rs){
+				var map = rs.second_tagid;
+				$scope.subtaglist = [{
+					name : '全部分类', //rs.magin_tagid.name,
+					tag_id : -1
+				}].concat(_.toArray(map));
+				console.log($scope.subtaglist);
+			}
+		};
+
+		$scope.loadMoreList = function(){
+
+			$scope.more = 2;
+			F.getListData(function(flag, rs){
+				console.log(rs);
+
+				$scope.$apply(function(){
+					$scope.list = $scope.list.concat(rs.list);
+
+					$scope.more = F.checkMoreState(rs.list);
+
+				});
+
+			})
+		};
+
+		$scope.changeSubtag = function(val){
+			C.subtag = val;
+			C.page = 1;
+
+			KG.helper.loading.show();
+			F.getListData(function(flag, rs){
+				KG.helper.loading.hide();
+				if(flag){
+					$scope.list = rs.list;
+					$scope.more = F.checkMoreState(rs.list);
+				}
+				else{
+					$scope.list = [];
+
+					$scope.emptyText = '暂无本类商家';
+					$scope.more = 3;
+				}
+			});
+		};
+
+		$scope.goToCoupon = function(e, id){
+			util.path.go(util.path.coupon(id));
+			e.preventDefault();
+			//return false;
+		};
+
+		F.init();
+	}
+]);
