@@ -20,6 +20,7 @@ var JS = {
 		"../bothjs/helper.js",
 		"../bothjs/user.js",
 
+		"../bothjs/factory/base.js",
 		"../bothjs/factory/ImagePreviewFactory.js",
 
 		"../bothjs/directive/base.js",

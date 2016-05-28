@@ -1,0 +1,24 @@
+<ion-modal-view class="hw-modal">
+
+	<ion-header-bar class="hw-base-header">
+		<div class="buttons">
+
+		</div>
+		<h1 class="title">登录／注册</h1>
+
+		<div class="buttons">
+			<button class="button button-clear hw-close"
+			        ng-if="showCloseButton"
+			        ng-click="closeModal()">
+				<i style="color: #ffffff;" class="icon ion-ios-close-outline"></i>
+			</button>
+		</div>
+	</ion-header-bar>
+
+
+
+	<hw-user-login-comp
+		register-success-callback="registerSuccessCallback"
+		login-success-callback="loginSuccessCallback"></hw-user-login-comp>
+
+</ion-modal-view>

@@ -1,17 +1,39 @@
 KG.App.controller('MineStoreListCtrl', [
 	'$scope',
-	function($scope){
+	'$rootScope',
+	'LoginBox',
+	function($scope, $rootScope, LoginBox){
 
+		$rootScope.initPage = function(){
 
-		KG.helper.loading.show();
-		KG.request.getBizList({}, function(flag, rs){
-			KG.helper.loading.hide();
-			if(flag){
-				console.log(rs);
+			var user = KG.user.get();
+			if(!user.isLogin){
+				//show login box
+				LoginBox.showLoginModal({
+					showCloseButton : false,
+					loginSuccessCallback : function(){
+						location.reload();
+					}
+				});
 
-				$scope.list = rs;
+				return;
 			}
-		});
+
+
+			KG.helper.loading.show();
+			KG.request.getBizList({}, function(flag, rs){
+				KG.helper.loading.hide();
+				if(flag){
+					console.log(rs);
+
+					$scope.list = rs;
+				}
+			});
+		};
+
+
+
+
 	}
 ]);
 

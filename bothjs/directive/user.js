@@ -6,6 +6,9 @@ KG.App.directive('hwUserLoginComp', [
 			restrict : 'E',
 			replace : true,
 			templateUrl : util.getTplPath('user/LoginAndReg'),
+			scope : {
+				loginSuccessCallback : '='
+			},
 			controller : function($scope, $element){
 				$scope.isLoginBox = true;
 
@@ -27,6 +30,10 @@ KG.App.directive('hwUserLoginComp', [
 						}, function(user){
 							KG.helper.toast('登录成功');
 							console.log(user);
+
+							$scope.loginSuccessCallback(user);
+						}, function(err){
+							KG.helper.toast(err);
 						});
 					},
 					clickRegBtn : function(){

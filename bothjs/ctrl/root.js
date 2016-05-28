@@ -38,7 +38,7 @@ KG.App.run(function(
 	};
 
 
-	$rootScope.$on('$ionicView.loaded', function(e){
+	//$rootScope.$on('$ionicView.loaded', function(e){
 		console.log('---- view loaded ----');
 		KG.user.checkLogin(function(){
 
@@ -47,14 +47,17 @@ KG.App.run(function(
 				$rootScope.user = KG.user.get();
 			}
 
-			if(_.isFunction($rootScope.initPage)){
-				$rootScope.initPage.call(null, user);
-			}
+			_.delay(function(){
+				if(_.isFunction($rootScope.initPage)){
+					$rootScope.initPage.call(null, user);
+				}
+			}, 100);
+
 
 
 		});
 
-	});
+	//});
 
 
 });
