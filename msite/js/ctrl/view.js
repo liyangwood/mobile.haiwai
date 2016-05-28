@@ -1,7 +1,9 @@
 
 KG.App.controller('StoreViewCtrl', [
 	'$scope',
-	function($scope){
+	'$rootScope',
+	function($scope, $rootScope){
+
 
 		var storeID = util.url.param('id');
 

@@ -81,6 +81,7 @@ KG.App.factory('$helper', function(
             $location.path(path);
         },
 
+
         checkUpdateForIos : function(){
             if(!util.isIOS()) return;
 

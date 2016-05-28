@@ -3,11 +3,12 @@
 		image : 'http://www.sinomedianet.com/haiwai2015.3.19/images/default_avatar.png',
 		defaultImage : 'http://www.sinomedianet.com/haiwai2015.3.19/images/default_avatar.png',
 		email : '',
-		userid : 14678,
+		userid : '',
 		tel : '',
 		token : '',
-		isLogin : true
+		isLogin : false
 	};
+
 	KG.user = {
 		get : function(key){
 			if(key){
