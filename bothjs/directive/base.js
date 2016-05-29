@@ -107,12 +107,14 @@ KG.App.directive('hwLoadingImage', function(){
 		controller : function($scope, $element, $attrs){
 			var elem = util.jq($element);
 			$attrs.$observe('imgSrc', function(val){
+				if(val === 'loading') return;
 				var w = elem.width(),
 					h = elem.height();
 				var ww, hh;
 
 				var img = new Image();
 				img.src = val;
+
 
 				var sy = 'position:absolute;',
 					f = 'width';

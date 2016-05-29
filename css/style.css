@@ -268,9 +268,7 @@ p {
   font-size: 15px;
   color: #4a4a4a;
   padding: 0 10px 0 10px;
-  border: 1px solid #c5c5c5;
-  background: transparent;
-  -webkit-appearance: none; }
+  border: 1px solid #c5c5c5; }
 
 .hw-icon {
   display: inline-block;

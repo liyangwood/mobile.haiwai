@@ -7,6 +7,7 @@ KG.App.controller('MineStoreListCtrl', [
 		$rootScope.initPage = function(){
 
 			var user = KG.user.get();
+
 			if(!user.isLogin){
 				//show login box
 				LoginBox.showLoginModal({
@@ -43,8 +44,12 @@ KG.App.controller('MineCreateStoreStep1', [
 	function($scope, $rootScope){
 		$rootScope.initPage = function(){
 			var user = KG.user.get();
+			console.log('[USER]', user, user.isLogin);
 			if(!user.isLogin){
-				util.path.go('user.login.html');
+				_.delay(function(){
+					util.path.go('user.login.html');
+				}, 100);
+
 
 				return;
 			}

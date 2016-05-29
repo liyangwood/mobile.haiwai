@@ -313,8 +313,8 @@
 
 
 	//debug
-	if(!util.url.param('debug')){
-		//console.log = console.error = function(){};
+	if(location.host.indexOf('localhost')===-1 && !util.url.param('debug')){
+		console.log = console.error = function(){};
 	}
 })();
 

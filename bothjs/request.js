@@ -201,12 +201,12 @@ KG.request = {
 			'uploadfield[]' : opts.image
 		};
 
-		if(_.isArray(opts.image)){
-			delete data['uploadfield[]'];
-			_.each(opts.image, function(src, index){
-				data['uploadfield['+index+']'] = src;
-			});
-		}
+		//if(_.isArray(opts.image)){
+		//	delete data['uploadfield[]'];
+		//	_.each(opts.image, function(src, index){
+		//		data['uploadfield['+index+']'] = src;
+		//	});
+		//}
 
 		return this.ajax(data, success, error);
 	},
@@ -545,7 +545,7 @@ KG.request = {
 		var data = {
 			func : 'biz',
 			act : 'pc_add',
-			//method : 'post',
+			method : 'post',
 			step : 3,
 			biz_tmpid : opts.bizTmpId||'',
 			background_pic : opts.bgPic
@@ -554,10 +554,10 @@ KG.request = {
 			data.logo = opts.logo;
 		}
 
-		util.each(opts.imageList||[], function(one, i){
+		_.each(opts.imageList||[], function(one, i){
 			data['uploadfield['+i+']'] = one;
 		});
-
+console.log(data);
 		data = util.addUserIdToRequestData(data);
 		return this.ajax(data, success, error);
 	},

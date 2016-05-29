@@ -47,13 +47,25 @@ KG.App.run(function(
 				$rootScope.user = KG.user.get();
 			}
 
-			_.delay(function(){
-				if(_.isFunction($rootScope.initPage)){
-					$rootScope.initPage.call(null, user);
+
+			//TODO 没想好如何处理同一的登录判断，先hack一下，以后优化。
+			var num = 0;
+			var loop = function(){
+				if(num > 3){
+					return false;
 				}
-			}, 100);
+				_.delay(function(){
+					if(_.isFunction($rootScope.initPage)){
+						$rootScope.initPage.call(null, user);
+					}
+					else{
+						num++;
+						loop();
+					}
+				}, 500);
+			};
 
-
+			loop();
 
 		});
 

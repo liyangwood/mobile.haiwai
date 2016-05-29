@@ -258,7 +258,7 @@ KG.App.factory('$helper', function(
                         }
                     }
 
-                    var dataUrl = canvas.toDataURL(type || 'image/jpeg');
+                    var dataUrl = canvas.toDataURL('image/jpeg');
                     console.log(dataUrl.length);
                     callback(dataUrl);
                 });

@@ -431,7 +431,8 @@ KG.App.directive('hwCreateStoreStep2', [
 
 KG.App.directive('hwCreateStoreStep3', [
 	'$q',
-	function($q){
+	'$ionicActionSheet',
+	function($q, $ionicActionSheet){
 		var C = {
 			scope : null,
 			elem : null,
@@ -451,6 +452,8 @@ KG.App.directive('hwCreateStoreStep3', [
 				C.scope.logo = {};
 				C.scope.imageList = [];
 				C.scope.desc = {};
+
+				C.scope.loadingImageList = [];
 
 				F.initElement();
 			},
@@ -498,12 +501,43 @@ KG.App.directive('hwCreateStoreStep3', [
 						var defer = $q.defer();
 
 						var fr = new FileReader();
+
+						C.scope.$apply(function(){
+							C.scope.loadingImageList.push('loading');
+						});
+
 						fr.onload = function(e){
 							var binary = e.target.result;
 							KG.helper.zipLocalImage(binary, one.type, function(nb){
-								arr.push(nb);
 
-								defer.resolve();
+								KG.request.uploadStoreImage({
+									type : 'tmp',
+									bizId : C.bizID,
+									image : [nb]
+								}, function(flag, rs){
+									defer.resolve();
+									if(flag){
+										var tmp = _.map(rs.files, function(src){
+											return KG.config.SiteRoot+src;
+										});
+
+										console.log(tmp);
+
+										if(C.scope.loadingImageList.length > 0){
+											C.scope.loadingImageList.splice(0, 1);
+										}
+
+										C.scope.imageList = tmp.concat(C.scope.imageList);
+
+
+
+									}
+									else{
+										KG.helper.toast(rs);
+									}
+
+								});
+
 							});
 						};
 						fr.readAsDataURL(one);
@@ -511,28 +545,9 @@ KG.App.directive('hwCreateStoreStep3', [
 						deferList.push(defer.promise);
 					});
 
-					KG.helper.loading.show('正在上传图片');
+					//KG.helper.loading.show('正在上传图片');
 					$q.all(deferList).then(function(){
-						KG.request.uploadStoreImage({
-							type : 'tmp',
-							bizId : C.bizID,
-							image : arr
-						}, function(flag, rs){
-							KG.helper.loading.hide();
-
-							if(flag){
-								KG.helper.toast('上传成功');
-								var tmp = _.map(rs.files, function(src){
-									return KG.config.SiteRoot+src;
-								});
-								console.log(tmp);
-								C.scope.imageList = tmp.concat(C.scope.imageList);
-							}
-							else{
-								KG.helper.toast(rs);
-							}
-
-						});
+						KG.helper.toast('上传成功');
 					});
 
 					glist.val('');
@@ -584,6 +599,24 @@ KG.App.directive('hwCreateStoreStep3', [
 				else{
 					createStore();
 				}
+			},
+			deleteImage : function(index){
+				var hide = $ionicActionSheet.show({
+					buttons: [
+						{
+							text : '删除图片'
+						}
+					],
+					//titleText: '',
+					cancelText: '关闭',
+					cancel: function(){
+						// add cancel code..
+					},
+					buttonClicked : function(n){
+						hide();
+						C.scope.imageList.splice(n, 1);
+					}
+				});
 			}
 		};
 

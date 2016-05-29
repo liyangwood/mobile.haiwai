@@ -18,7 +18,10 @@
 				<i class="icon hw-icon-plus"></i>
 				<input type="file" class="cf js_glist" multiple="9" />
 			</div>
-			<hw-loading-image class="g-list" img-src="{{::src}}" ng-repeat="src in imageList">
+
+			<hw-loading-image class="g-list" img-src="{{::src}}" ng-repeat="src in loadingImageList track by $index"></hw-loading-image>
+
+			<hw-loading-image ng-click="deleteImage($index)" class="g-list" img-src="{{::src}}" ng-repeat="src in imageList track by src">
 			</hw-loading-image>
 		</dd>
 	</div>
