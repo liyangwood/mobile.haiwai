@@ -52,7 +52,11 @@ KG.App.controller('MineCreateStoreStep1', [
 
 		$scope.submitCallback = function(){
 			KG.helper.goPath('/step2');
-		}
+		};
+
+		$scope.goHome = function(){
+			util.path.go('mine.storelist.html');
+		};
 	}
 ]);
 

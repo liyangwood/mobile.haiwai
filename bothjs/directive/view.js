@@ -108,10 +108,11 @@ KG.App.directive('hwStoreViewComp', [
 
 				];
 				C.timeinfo = {
-					today : '营业时间未设置',
+					today : '今天营业时间未设置',
 					flag : false
 				};
 				var today = moment().day();
+				console.log(today);
 				_.each(C.store.timeinfo.unformat, function(item){
 					if(item[ST[today][0]] === '1'){
 						C.timeinfo.flag = 'down';
@@ -141,9 +142,17 @@ KG.App.directive('hwStoreViewComp', [
 					console.log(s, e);
 
 					_.each(val, function(one){
-						xx += s[1]+' - '+e[1]+' : '+one.replace(',', ' - ')+'<br/>';
+
+						xx += s[1];
+						if(e){
+							xx += ' - '+e[1];
+						}
+						xx += ' : '+one.replace(',', ' - ')+'<br/>';
 					});
 				});
+				if(xx){
+					C.timeinfo.flag = 'down';
+				}
 				C.timeinfo.all = xx;
 
 
