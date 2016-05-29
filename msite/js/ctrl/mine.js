@@ -50,7 +50,7 @@ KG.App.controller('MineCreateStoreStep1', [
 			}
 		};
 
-		$scope.goToStep2 = function(){
+		$scope.submitCallback = function(){
 			KG.helper.goPath('/step2');
 		}
 	}
@@ -69,6 +69,31 @@ KG.App.controller('MineCreateStoreStep2', [
 			}
 		};
 
+		$scope.submitCallback = function(bizID, json){
+			KG.helper.goPath('/step3');
+		}
+	}
+]);
 
+KG.App.controller('MineCreateStoreStep3', [
+	'$scope',
+	'$rootScope',
+	function($scope, $rootScope){
+		$rootScope.initPage = function(){
+			var user = KG.user.get();
+			if(!user.isLogin){
+				util.path.go('user.login.html');
+
+				return;
+			}
+		};
+
+		$scope.submitCallback = function(){
+			util.path.go('mine.storelist.html');
+		};
+
+		$scope.errorParamCallback = function(){
+			util.path.go('mine.createstore.html');
+		};
 	}
 ]);

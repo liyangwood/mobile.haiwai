@@ -196,6 +196,7 @@ p{
     justify-content: center;
     background: transparent;
     position: relative;
+    overflow: hidden;
 }
 
 .hw-slide-image{
@@ -346,7 +347,13 @@ p{
 }
 
 
-
+.icon.hw-icon-plus{
+    background: url(http://www.haiwai.com/pc/image/plus_upload.png);
+    background-size: 100%;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
 
 
 .hw-center-text{

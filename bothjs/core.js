@@ -1,7 +1,7 @@
 (function(){
 	var KG = {};
 
-	var site = 'http://www.haiwai.com';
+	var site = 'http://beta.haiwai.com';
 	KG.config = {
 		APP_NAME : 'HaiWaiApp',
 

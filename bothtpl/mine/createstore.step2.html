@@ -8,31 +8,73 @@
 		data-require="">
 	</kg-base-input>
 
-	<kg-base-input
-		data-gap="15"
-		value="zip.value"
-		error="zip.error"
-		data-label="邮编"
-		data-require="true">
-	</kg-base-input>
+	<div class="hw-inline-box">
+		<kg-base-input
+			class="hw-inline-input js_zip"
+			data-gap="0"
+			value="zip.value"
+			error="zip.error"
+			data-label="邮编"
+			data-require="true">
+		</kg-base-input>
 
-	<kg-base-input
-		data-gap="15"
-		value="city.value"
-		error="city.error"
-		data-label="城市"
-		data-require="true">
-	</kg-base-input>
+		<kg-base-input
+			class="hw-inline-input"
+			data-gap="0"
+			value="city.value"
+			error="city.error"
+			data-label="城市"
+			data-require="true">
+		</kg-base-input>
 
-	<kg-base-input
-		data-gap="15"
-		value="state.value"
-		error="state.error"
-		data-label="州/省"
-		data-require="true">
-	</kg-base-input>
+		<kg-base-input
+			class="hw-inline-input"
+			data-gap="0"
+			value="state.value"
+			error="state.error"
+			data-label="州/省"
+			data-require="true">
+		</kg-base-input>
+	</div>
 
-	<div class="hw-line"></div>
 
+	<div class="t-box">
+		<label class="hw-kgBaseInput" style="margin: 0;height: 26px;">
+			<span class="lb">营业时间</span>
+			<span class="error">{{timeinfo.error}}</span>
+		</label>
+
+		<dd class="ca">
+			<select class="hw-select"
+			        ng-change="changeStartTime()"
+			        ng-model="timeinfo.start">
+				<option ng-selected="val==timeinfo.start" ng-repeat="val in const.timelist track by $index" value="{{::val}}">{{::val}}</option>
+			</select>
+			<b class="cgap"> 至 </b>
+			<select class="hw-select"
+			        ng-change="changeEndTime()"
+			        ng-model="timeinfo.end">
+				<option ng-repeat="val in const.timelist track by $index" ng-selected="val==timeinfo.end" value="{{::val}}">{{::val}}</option>
+			</select>
+		</dd>
+		<dd class="da">
+			<b ng-repeat="val in timeinfo.DAY"
+			   ng-click="clickTimeinfoDate(val, $event)"
+			   ng-class="{'active':val.active}">{{::val.name}}</b>
+		</dd>
+		<a href="javascript:void(0)" ng-click="addTimeList()" class="hw-btn hw-light-button">添加</a>
+
+	</div>
+
+	<dd class="list hw-time-list">
+		<div ng-repeat="item in timeinfo.list" class="item item-icon-right">
+			<h2>{{::item.weektimeData}}</h2>
+			<p>{{::item.daytimeData}}</p>
+			<i ng-click="deleteTimeinfoItem($index)" class="icon ion-ios-trash"></i>
+		</div>
+	</dd>
+
+
+	<a style="margin-top: 50px;" class="hw-btn hw-blue-button" ng-click="submit()">下一步</a>
 
 </section>

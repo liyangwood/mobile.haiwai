@@ -1,5 +1,3 @@
-<!-- not use -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,30 +47,50 @@
 
 <!-- endbuild -->
 </head>
-<body ng-app="HaiWaiApp" ng-controller="MineCreateStoreStep1">
+<body ng-app="HaiWaiApp">
 
-<ion-header-bar class="hw-base-header">
-	<div class="buttons">
-		<button class="button-clear hw-back" ng-click="fn.goBack()">
-			<i class="icon ion-ios-arrow-left"></i>
-		</button>
-	</div>
-	<h1 class="title">创建店铺</h1>
+<ion-nav-bar animation="nav-title-slide-ios7"
+             type="bar-positive"
+             class="hw-base-header">
+	<ion-nav-back-button class="button-clear hw-back">
+		<i class="icon ion-ios-arrow-left"></i>
+	</ion-nav-back-button>
+</ion-nav-bar>
 
-
-</ion-header-bar>
-
-
-
-
-<ion-content class="hw-content">
-	<div class="hw-cs-step"><p></p></div>
-
-	<hw-create-store-step1 submit-callback="goToStep2()">
-	</hw-create-store-step1>
-
-</ion-content>
-
+<ion-nav-view></ion-nav-view>
 
 </body>
 </html>
+
+<script type="text/javascript">
+
+	KG.App.provider('appRouter', function($stateProvider){
+		_.extend(this, {
+			init : function(){
+				$stateProvider.state('index', {
+					url : '/',
+					templateUrl : util.getTplPath('msite/createstore.step1'),
+					controller : 'MineCreateStoreStep1'
+				}).state('step2', {
+					url : '/step2',
+					templateUrl : util.getTplPath('msite/createstore.step2'),
+					controller : 'MineCreateStoreStep2'
+				}).state('step3', {
+					url : '/step3',
+					templateUrl : util.getTplPath('msite/createstore.step3'),
+					controller : 'MineCreateStoreStep3'
+				});
+			}
+		});
+		this.$get = function(){};
+
+	});
+
+	KG.App.config(function($stateProvider, $urlRouterProvider, appRouterProvider){
+		//配置路由
+		appRouterProvider.init();
+		$urlRouterProvider.otherwise('/');
+
+	});
+
+</script>

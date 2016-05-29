@@ -122,7 +122,8 @@ p {
   -webkit-justify-content: center;
   justify-content: center;
   background: transparent;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 .hw-slide-image {
   background: #f5f5f5; }
@@ -237,6 +238,13 @@ p {
     margin-top: 0px; }
   .hw-bizinfo-style1 .item .icon {
     color: #fff; }
+
+.icon.hw-icon-plus {
+  background: url(http://www.haiwai.com/pc/image/plus_upload.png);
+  background-size: 100%;
+  display: inline-block;
+  width: 80px;
+  height: 80px; }
 
 .hw-center-text {
   font-size: 15px;
@@ -900,5 +908,150 @@ p {
 
 .hw-createstore-step2 .hw-kgBaseInput {
   margin-top: 20px; }
+.hw-createstore-step2 .hw-inline-box {
+  margin: 0 15px; }
+.hw-createstore-step2 .hw-inline-input {
+  display: inline-block;
+  width: 29%;
+  margin-left: 5% !important; }
+  .hw-createstore-step2 .hw-inline-input:first-child {
+    margin-left: 0 !important; }
+.hw-createstore-step2 .t-box {
+  margin-top: 20px;
+  padding: 20px 15px;
+  background: #ffffff; }
+  .hw-createstore-step2 .t-box .ca {
+    height: 50px;
+    position: relative; }
+    .hw-createstore-step2 .t-box .ca select {
+      width: 42%;
+      border-radius: 1px;
+      position: relative;
+      z-index: 2; }
+      .hw-createstore-step2 .t-box .ca select:first-child {
+        float: left; }
+      .hw-createstore-step2 .t-box .ca select:last-child {
+        float: right; }
+    .hw-createstore-step2 .t-box .ca .cgap {
+      text-align: center;
+      display: block;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 12px;
+      font-size: 15px;
+      color: #777;
+      font-weight: normal;
+      z-index: 0; }
+  .hw-createstore-step2 .t-box .da {
+    margin-top: 15px; }
+    .hw-createstore-step2 .t-box .da b {
+      font-weight: normal;
+      width: 68px;
+      height: 34px;
+      line-height: 34px;
+      display: inline-block;
+      border-radius: 3px;
+      text-align: center;
+      color: #9b9b9b;
+      font-size: 15px;
+      border: 1px solid #979797;
+      margin: 0 12px 12px 0; }
+    .hw-createstore-step2 .t-box .da b.active {
+      color: #ffffff;
+      border-color: #37bccd;
+      background: #37bccd; }
+  .hw-createstore-step2 .t-box .hw-btn {
+    display: block;
+    margin: 5px 30px 0;
+    font-size: 18px; }
+.hw-createstore-step2 .hw-time-list .item {
+  border-color: #ebebeb;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+  .hw-createstore-step2 .hw-time-list .item h2 {
+    color: #979797;
+    font-size: 15px; }
+  .hw-createstore-step2 .hw-time-list .item p {
+    color: #979797;
+    font-size: 14px; }
+  .hw-createstore-step2 .hw-time-list .item .icon {
+    color: #c5c5c5;
+    font-size: 28px; }
+
+.hw-createstore-step3 .hw-kgBaseInput {
+  margin: 20px 15px 0;
+  display: block;
+  text-align: left; }
+  .hw-createstore-step3 .hw-kgBaseInput .lb {
+    float: none;
+    margin-bottom: 5px;
+    display: inline-block; }
+.hw-createstore-step3 .hw-desc {
+  width: 100%;
+  height: 120px;
+  border: 1px solid #c5c5c5;
+  font-size: 15px;
+  color: #777;
+  padding: 5px;
+  resize: none; }
+.hw-createstore-step3 .hw-logo-box {
+  width: 100px;
+  height: 100px;
+  border: 1px dashed #c5c5c5;
+  position: relative;
+  background: #ffffff; }
+  .hw-createstore-step3 .hw-logo-box .icon {
+    position: absolute;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    top: 25px;
+    left: 25px; }
+  .hw-createstore-step3 .hw-logo-box .hw-img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    z-index: 2; }
+    .hw-createstore-step3 .hw-logo-box .hw-img img {
+      width: 100%;
+      height: 100%; }
+  .hw-createstore-step3 .hw-logo-box .cf {
+    opacity: 0;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    z-index: 3; }
+.hw-createstore-step3 .hw-img-box .g-add, .hw-createstore-step3 .hw-img-box .g-list {
+  width: 70px;
+  height: 70px;
+  background: #ffffff;
+  border: 1px dashed #c5c5c5;
+  position: relative;
+  margin-right: 10px;
+  display: inline-block;
+  margin-bottom: 10px; }
+.hw-createstore-step3 .hw-img-box .g-list {
+  display: inline-flex;
+  vertical-align: top; }
+.hw-createstore-step3 .hw-img-box .g-add .icon {
+  position: absolute;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  top: 15px;
+  left: 15px; }
+.hw-createstore-step3 .hw-img-box .g-add .cf {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 3; }
 
 /*# sourceMappingURL=style.css.map */

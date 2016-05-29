@@ -201,6 +201,13 @@ KG.request = {
 			'uploadfield[]' : opts.image
 		};
 
+		if(_.isArray(opts.image)){
+			delete data['uploadfield[]'];
+			_.each(opts.image, function(src, index){
+				data['uploadfield['+index+']'] = src;
+			});
+		}
+
 		return this.ajax(data, success, error);
 	},
 
@@ -618,6 +625,13 @@ KG.request = {
 			'uploadfield[]' : opts.image,
 			bizid : opts.bizId
 		};
+
+		if(_.isArray(opts.image)){
+			delete data['uploadfield[]'];
+			_.each(opts.image, function(src, index){
+				data['uploadfield['+index+']'] = src;
+			});
+		}
 
 		if(opts.type === 'tmp'){
 			data.biz_tmpid = opts.bizId;
@@ -1215,6 +1229,43 @@ KG.request = {
 		};
 
 		data = util.addUserIdToRequestData(data);
+		return this.ajax(data, success, error);
+	},
+
+	/*
+	 * func=passport&act=complete_mobile_login&email=sidazhong@gmail.com&password=123456
+	 * */
+	addUserEmailAndPassword : function(opts, success, error){
+		var data = {
+			func : 'passport',
+			act : 'complete_mobile_login',
+			email : opts.email,
+			password : opts.password
+		};
+		data = util.addUserIdToRequestData(data);
+		return this.ajax(data, success, error);
+	},
+
+	/*
+	 * func=passport&act=get_ip_region
+	 * */
+	getCurrentRegionByIP : function(opts, success, error){
+		var data = {
+			func : 'passport',
+			act : 'get_ip_region'
+		};
+		return this.ajax(data, success, error);
+	},
+
+	/*
+	 * func=biz&act=get_region_by_zipcode&zipcode=95035
+	 * */
+	getRegionInfoByZipcode : function(opts, success, error){
+		var data = {
+			func : 'biz',
+			act : 'get_region_by_zipcode',
+			zipcode : opts.zip
+		};
 		return this.ajax(data, success, error);
 	}
 };

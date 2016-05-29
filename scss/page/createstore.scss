@@ -48,4 +48,214 @@
     .hw-kgBaseInput{
         margin-top: 20px;
     }
+
+    .hw-inline-box{
+        margin: 0 15px;
+    }
+
+    .hw-inline-input{
+        display: inline-block;
+        width: 29%;
+        margin-left: 5% !important;
+
+        &:first-child{
+            margin-left: 0 !important;
+        }
+    }
+
+    .t-box{
+        margin-top: 20px;
+        padding: 20px 15px;
+        background: #ffffff;
+
+        .ca{
+            height: 50px;
+            position: relative;
+
+            select{
+                width: 42%;
+                border-radius: 1px;
+                position: relative;
+                z-index: 2;
+
+                &:first-child{
+                    float: left;
+                }
+                &:last-child{
+                    float: right;
+                }
+            }
+
+            .cgap{
+                text-align: center;
+                display: block;
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 12px;
+                font-size: 15px;
+                color: #777;
+                font-weight: normal;
+                z-index: 0;
+            }
+        }
+
+        .da{
+            margin-top: 15px;
+
+            b{
+                font-weight: normal;
+                width: 68px;
+                height: 34px;
+                line-height: 34px;
+                display: inline-block;
+                border-radius: 3px;
+                text-align: center;
+
+                color: #9b9b9b;
+                font-size: 15px;
+                border: 1px solid #979797;
+                margin: 0 12px 12px 0;
+            }
+
+            b.active{
+                color: #ffffff;
+                border-color: $blue-color;
+                background: $blue-color;
+            }
+        }
+
+        .hw-btn{
+            display: block;
+            margin: 5px 30px 0;
+            font-size: 18px;
+        }
+    }
+
+    .hw-time-list{
+        .item{
+            border-color: #ebebeb;
+            padding-top: 6px;
+            padding-bottom: 6px;
+
+            h2{
+                color: #979797;
+                font-size: 15px;
+            }
+            p{
+                color: #979797;
+                font-size: 14px;
+            }
+
+            .icon{
+                color: #c5c5c5;
+                font-size: 28px;
+            }
+        }
+    }
 }
+
+.hw-createstore-step3{
+
+    .hw-kgBaseInput{
+        margin: 20px 15px 0;
+        display: block;
+        text-align: left;
+
+        .lb{
+            float: none;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+    }
+
+    .hw-desc{
+        width: 100%;
+        height: 120px;
+        border: 1px solid #c5c5c5;
+        font-size: 15px;
+        color: #777;
+        padding: 5px;
+        resize: none;
+    }
+
+    .hw-logo-box{
+        width: 100px;
+        height: 100px;
+        border: 1px dashed #c5c5c5;
+        position: relative;
+        background: #ffffff;
+
+        .icon{
+            position: absolute;
+            z-index: 1;
+            width: 50px;
+            height: 50px;
+            top: 25px;
+            left: 25px;
+        }
+
+        .hw-img{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 0;
+            left: 0;
+            z-index: 2;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .cf{
+            opacity: 0;
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+    }
+
+    .hw-img-box{
+        .g-add, .g-list{
+            width: 70px;
+            height: 70px;
+            background: #ffffff;
+            border: 1px dashed #c5c5c5;
+            position: relative;
+            margin-right: 10px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .g-list{
+            display: inline-flex;
+            vertical-align: top;
+        }
+        .g-add{
+
+            .icon{
+                position: absolute;
+                z-index: 1;
+                width: 40px;
+                height: 40px;
+                top: 15px;
+                left: 15px;
+            }
+
+            .cf{
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 3;
+            }
+        }
+    }
+}
+

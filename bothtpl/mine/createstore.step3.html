@@ -1,0 +1,35 @@
+<section class="hw-createstore-step3">
+
+	<div class="hw-kgBaseInput">
+		<span class="lb">店铺头像</span>
+		<dd class="hw-logo-box">
+			<i ng-show="!logo.value" class="icon hw-icon-plus"></i>
+			<hw-loading-image ng-show="!!logo.value" class="hw-img"
+			                  img-src="{{::logo.value}}">
+			</hw-loading-image>
+			<input type="file" class="cf js_logo" />
+		</dd>
+	</div>
+
+	<div class="hw-kgBaseInput">
+		<span class="lb">上传图片</span>
+		<dd class="hw-img-box">
+			<div class="g-add">
+				<i class="icon hw-icon-plus"></i>
+				<input type="file" class="cf js_glist" multiple="9" />
+			</div>
+			<hw-loading-image class="g-list" img-src="{{::src}}" ng-repeat="src in imageList">
+			</hw-loading-image>
+		</dd>
+	</div>
+
+	<div class="hw-line"></div>
+	<div class="hw-kgBaseInput">
+		<span class="lb">店铺简介</span>
+		<dd>
+			<textarea ng-model="desc.value" class="hw-desc"></textarea>
+		</dd>
+	</div>
+
+	<a style="margin-top: 50px;" class="hw-btn hw-blue-button" ng-click="submit()">下一步</a>
+</section>
