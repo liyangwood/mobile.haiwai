@@ -32,6 +32,11 @@ KG.App.controller('HomePageCtrl', [
 
 		};
 
+		KG.helper.setWeixinShare({
+			title : '海外同城',
+			description : '海外同城首页'
+		});
+
 	}
 ]);
 

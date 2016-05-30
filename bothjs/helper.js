@@ -26,7 +26,75 @@ KG.App.factory('$helper', function(
 
     var F = {
         init : function(){
+            if($window.navigator.userAgent.indexOf('MicroMessenger')>0)
+                F.initWeiXinConfig();
             console.log('helper init success');
+        },
+
+        initWeiXinConfig : function(){
+            $http.get('http://130.211.186.174/wxapi/js_ticket?url='+encodeURIComponent($window.location.href.replace(location.hash, '')), {}).then(function(rs){
+                var config = rs.data;
+                $window.wx.paramConfig = config;
+                $window.wx.config({
+                    debug : false,
+                    appId : config.appId,
+                    timestamp : config.timestamp,
+                    nonceStr : config.nonceStr,
+                    signature : config.signature,
+                    jsApiList : config.jsApiList
+                });
+
+                console.log('init weixin');
+                $window.wx.error(function(res){
+
+                });
+            });
+
+
+        },
+
+        setWeixinShare : function(opts){
+            var content = opts.description,
+                title = opts.title;
+
+            var desc = '海外同城 | haiwai.com',
+                imgUrl = 'http://www.haiwai.com/images/hw_logo1.png';
+            try{
+                desc = content.replace(/\n/g,'').replace(/<[^>]+>/gm, '').substr(0, 60);
+                var reg = /<img[^>]*src="([^"]*)"[^>]*>/gm;
+
+                var tmp;
+                if(tmp = reg.exec(content.replace(/\n/g,''))){
+                    imgUrl = tmp[1];
+                }
+            }catch(e){}
+
+
+            var wx = KG.helper.getWeixinObject();
+            wx.ready(function(){
+
+                wx.onMenuShareAppMessage({
+                    title: title, // 分享标题
+                    desc: desc, // 分享描述
+                    link: $window.location.href, // 分享链接
+                    imgUrl: opts.image || imgUrl, // 分享图标
+                    type: '', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+
+                    trigger: function (res) {
+                    },
+                    success: function () {
+                    },
+                    cancel: function () {
+                    }
+                });
+
+
+            });
+        },
+
+        getWeixinObject : function(){
+            return $window.wx;
         },
 
 
@@ -89,7 +157,7 @@ KG.App.factory('$helper', function(
         checkUpdateForIos : function(){
             if(!util.isIOS()) return;
 
-            //var url = 'http://itunes.apple.com/lookup?id='+HW.config.appleAppId;
+            //var url = 'http://itunes.apple.com/lookup?id='+KG.config.appleAppId;
         },
 
         checkWeixinInstall : function(callback){
@@ -124,7 +192,7 @@ KG.App.factory('$helper', function(
             Wechat.auth(scope, function (response) {
                 //TODO 这里的逻辑以后要放在server上处理，隐藏secret，不能在client处理
                 var code = response.code;
-                var url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+HW.config.appid+'&secret='+HW.config.appsecret+'&code='+code+'&grant_type=authorization_code';
+                var url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+KG.config.appid+'&secret='+KG.config.appsecret+'&code='+code+'&grant_type=authorization_code';
 
                 $http.get(url).success(function(rs){
 
@@ -149,7 +217,7 @@ KG.App.factory('$helper', function(
             var width = opts.width || 100,
                 height = opts.height || 100;
 
-            return HW.config.APPROOT + '/images/'+width+'/'+height+url;
+            return KG.config.APPROOT + '/images/'+width+'/'+height+url;
         },
 
         rotateImg : function(img, direction, canvas){
@@ -246,14 +314,14 @@ KG.App.factory('$helper', function(
                     if(a.Orientation){
                         switch(a.Orientation){
                             case 6:
-                                HW.helper.rotateImg(image, 'left', canvas);
+                                KG.helper.rotateImg(image, 'left', canvas);
                                 break;
                             case 8:
-                                HW.helper.rotateImg(image, 'right', canvas);
+                                KG.helper.rotateImg(image, 'right', canvas);
                                 break;
                             case 3:
-                                HW.helper.rotateImg(image, 'right', canvas);
-                                HW.helper.rotateImg(image, 'right', canvas);
+                                KG.helper.rotateImg(image, 'right', canvas);
+                                KG.helper.rotateImg(image, 'right', canvas);
                                 break;
                         }
                     }
