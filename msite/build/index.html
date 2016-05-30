@@ -50,20 +50,20 @@
 <body ng-app="HaiWaiApp" ng-controller="HomePageCtrl">
 
 <hw-site-home-header></hw-site-home-header>
-<ion-content class="hw-content">
+<ion-content class="hw-content has-header">
 	<hw-site-home-top-nav></hw-site-home-top-nav>
 
-	<div style="margin-top: 20px;" class="list hw-home-coupon-list">
-		<div class="item cp-head">
+	<div style="margin-top: 20px;" class="list hw-coupon-list">
+		<div class="c-title" style="">
 			热门优惠
-			<a href="" class="item-note">
-				全部优惠
-			</a>
+			<!--<a href="" class="item-note">-->
+				<!--全部优惠-->
+			<!--</a>-->
 		</div>
-		<a class="item item-thumbnail-left cp-item" ng-repeat="item in couponList">
-			<img ng-src="{{::item.files[0].path}}" />
+		<a class="item item-thumbnail-left cp-item" ng-href="{{::fn.path.coupon(item.pk_id)}}" ng-repeat="item in couponList track by item.pk_id">
+			<hw-loading-image class="hw-img" img-src="{{::fn.absPath(item.files[0].path)}}"></hw-loading-image>
 			<h2>
-				{{::item.bizinfo.name_cn}}
+				{{::item.bizinfo.name_cn||item.bizinfo.name_en}}
 				<span></span>
 			</h2>
 			<p class="cp-p">{{::item.subject}}</p>
@@ -71,13 +71,27 @@
 		</a>
 	</div>
 
-	<div style="margin-top: 20px;" class="list hw-home-coupon-list">
-		<div class="item cp-head">
+	<div style="margin-top: 20px;background: #ffffff;" class="hw-list hw-store-list">
+		<div class="c-title">
 			新店入驻
 		</div>
+
+		<a ng-repeat="item in bizList track by item.entityID" class="item item-thumbnail-left hw-item"
+		   ng-href="{{::fn.path.store(item.entityID)}}">
+			<hw-loading-image class="hw-img" img-src="{{::fn.logoPath(item)}}"></hw-loading-image>
+			<p class="h4">{{::item.name_cn||item.name_en}}</p>
+			<p style="height: 24px;">
+				<hw-star-num star-num="{{::item.star}}"></hw-star-num>
+				<span>{{::item.commentnum}} 条评论</span>
+			</p>
+			<p class="hw-sp">{{::fn.fullAddress(item)}}</p>
+
+		</a>
 	</div>
 
-	<a class="hw-btn hw-light-button" style="margin: 30px 25px;">创建我的店铺</a>
+	<a class="hw-btn hw-light-button" ng-click="goToCreateStore()" style="margin: 30px 25px;">创建我的店铺</a>
+
+	<hw-site-footer></hw-site-footer>
 
 </ion-content>
 

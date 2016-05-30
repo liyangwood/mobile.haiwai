@@ -1,19 +1,46 @@
 KG.App.directive('hwSiteHomeHeader', [
 	function(){
+
+		var F = {
+			search : function(val){
+				if(!val) return false;
+				util.path.go('search.html?keyword='+val);
+			}
+		};
+
 		return {
 			restrict : 'E',
 			replace : true,
 			template : function(){
 				return [
 					'<div class="bar bar-header cp-site-header">',
-					'<button class="c1">旧金山</button>',
-					'<label class="item item-input c-lb">',
-					'<i class="icon ion-ios-search-strong placeholder-icon"></i>',
-					'<input type="text" placeholder="输入商铺，地点">',
-					'</label>',
-					'<button class="c1 c2"><i class="icon ion-social-github-outline"></i></button>',
+					'<button class="c1">海外同城</button>',
+					'<div class="item item-input c-lb">',
+					'<i class="js_sb icon ion-ios-search-strong placeholder-icon"></i>',
+					'<input type="text" class="js_search" placeholder="输入商铺，地点">',
+					'</div>',
+					'<button class="c1 c2"><i class="icon ion-navicon-round"></i></button>',
 					'</div>'
 				].join('');
+			},
+			controller : function($scope, $element){
+
+
+				var searchInput = $($element).find('.js_search');
+
+				searchInput.keyup(function(e){
+					if(e.keyCode !== 13){
+						return false;
+					}
+					var val = searchInput.val();
+					F.search(val);
+				});
+
+				$($element).find('.js_sb').click(function(){
+					var val = searchInput.val();
+					F.search(val);
+				});
+
 			}
 		};
 	}

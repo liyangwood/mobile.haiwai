@@ -454,6 +454,10 @@ p {
 
 .hw-store-list {
   background: transparent; }
+  .hw-store-list .c-title {
+    font-size: 15px;
+    color: #9b9b9b;
+    padding: 12px 15px; }
   .hw-store-list .hw-item {
     min-height: 86px;
     height: auto;
@@ -520,15 +524,16 @@ p {
     border: none;
     font-weight: 700;
     font-size: 14px;
-    width: 90px;
-    text-align: left; }
+    width: 100px;
+    text-align: left;
+    padding-right: 0; }
   .cp-site-header .c-lb {
     height: 32px;
     border-radius: 16px;
     background: #00a7bc;
     border: none;
     width: 90%;
-    margin-left: 10px;
+    margin-left: 1px;
     top: 2px; }
     .cp-site-header .c-lb input {
       color: #ffffff;

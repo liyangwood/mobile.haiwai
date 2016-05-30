@@ -261,6 +261,12 @@
 .hw-store-list{
     background: transparent;
 
+    .c-title{
+        font-size: 15px;
+        color: #9b9b9b;
+        padding: 12px 15px;
+    }
+
     .hw-item{
         min-height: 86px;
         height: auto;

@@ -1,7 +1,8 @@
 
 KG.App.controller('HomePageCtrl', [
 	'$scope',
-	function($scope){
+	'LoginBox',
+	function($scope, LoginBox){
 
 		KG.helper.loading.show();
 		KG.request.getSiteHomePageData({}, function(flag, rs){
@@ -9,7 +10,27 @@ KG.App.controller('HomePageCtrl', [
 			console.log(rs);
 
 			$scope.couponList = rs.classifiedinfo;
+			$scope.bizList = rs.biz;
 		});
+
+		$scope.goToCreateStore = function(){
+			var user = KG.user.get();
+			if(!user.isLogin){
+				LoginBox.showLoginModal({
+					showCloseButton : true,
+					loginSuccessCallback : function(){
+						location.reload();
+					}
+				});
+
+				return;
+			}
+			else{
+				util.path.go('mine.createstore.html');
+			}
+
+
+		};
 
 	}
 ]);
