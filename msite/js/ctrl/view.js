@@ -24,6 +24,12 @@ KG.App.controller('StoreViewCtrl', [
 				$scope.store = rs;
 			}
 
+			KG.helper.setWeixinShare({
+				title : rs.name_cn || rs.name_en,
+				description : rs.briefintro,
+				image : KG.helper.getWeixinShareImage(rs.logo[0].path)
+			});
+
 		});
 
 	}

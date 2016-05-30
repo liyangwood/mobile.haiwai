@@ -58,7 +58,7 @@ KG.App.factory('$helper', function(
                 title = opts.title;
 
             var desc = '海外同城 | haiwai.com',
-                imgUrl = 'http://www.haiwai.com/images/hw_logo1.png';
+                imgUrl = 'http://www.haiwai.com/pc/image/haiwai1.png';
             try{
                 desc = content.replace(/\n/g,'').replace(/<[^>]+>/gm, '').substr(0, 60);
                 var reg = /<img[^>]*src="([^"]*)"[^>]*>/gm;
@@ -69,6 +69,7 @@ KG.App.factory('$helper', function(
                 }
             }catch(e){}
 
+            console.log(title, desc, opts.image||imgUrl);
 
             var wx = KG.helper.getWeixinObject();
             wx.ready(function(){
@@ -214,10 +215,18 @@ KG.App.factory('$helper', function(
         },
 
         getNewImageBySize : function(url, opts){
-            var width = opts.width || 100,
-                height = opts.height || 100;
+            var width = opts.width || 50,
+                height = opts.height || 50;
 
-            return KG.config.APPROOT + '/images/'+width+'/'+height+url;
+            return KG.config.SiteRoot + '/images/'+width+'/'+height+url;
+        },
+
+        getWeixinShareImage : function(path){
+            if(/^http/.test(path)){
+                return path;
+            }
+
+            return F.getNewImageBySize(path, {});
         },
 
         rotateImg : function(img, direction, canvas){
